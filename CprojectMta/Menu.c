@@ -10,7 +10,14 @@ void showMenu() {
 
     Position* source = (Position*)malloc(sizeof(Position));
     Position* destination = (Position*)malloc(sizeof(Position));
-    Board* board = (Board*)malloc(sizeof(Board));
+
+    Board board=
+            {
+                    {'1', '5', '6', '7'},
+                    {'4', '4', '8', '0'},
+                    {'4', '4', '8', '0'},
+                    {'2', '3', '4', '5'}
+            };
 
 	const char *menuOptions[] = { 
 								  "Load a board from file", 
@@ -37,24 +44,21 @@ void showMenu() {
 
         switch (input)
         {
-            case 1:
+            case 1: // load board from binary file
                 printf("Enter File Path\n");
                 scanf("%s",&file_name);
-
                 // TODO:  loadBoardFromBinFile(file_name, board);
                 break;
-            case 2:
+            case 2: // scan source and dest positions
                 scanPositions(source, destination);
-
-
                 break;
-            case 3:
+            case 3: // execute GreedyCheapPath function
                 break;
-            case 4:
+            case 4: // execute findAllPossiblePaths
                 break;
-            case 5:
+            case 5: // execute findAllPathSortedPrices
                 break;
-            case 6:
+            case 6: // bla bla
                 if (*source == NULL || *destination == NULL) {
                     printf("You forgot to enter positions\n");
                     scanPositions(source, destination);

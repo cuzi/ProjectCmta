@@ -32,8 +32,6 @@ typedef struct _pathTree {
 } pathTree;
 
 
-
-
 // Functions Declerations
 PositionArray	*greedyCheapPath(Board board, Position *src, Position *dst);
 pathTree		findAllPossiblePaths(Board board, Position *startingPosition);
