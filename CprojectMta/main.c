@@ -7,19 +7,17 @@ File name:	main.c
 */
 
 #include <stdio.h>
-#include "main.h"
+#include <stdlib.h>
+#include "Menu.h"
 
 
 void main()
 {
-	Position source		 = malloc(sizeof(Position));
-	Position destination = malloc(sizeof(Position));
-	Board    board		 = malloc(sizeof(Board));
-	int		 ans		 = 0;
+	Position* source = (Position*)malloc(sizeof(Position));
+	Position* destination = (Position*)malloc(sizeof(Position));
+	Board* board = (Board*)malloc(sizeof(Board));
 
-	while (ans != 7) {
-		ans = showMenu(&source, &destination, &board);
-	}
+    showMenu(source, destination, board);
 
 	// TODO: free vars
 }
