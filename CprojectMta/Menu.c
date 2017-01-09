@@ -3,9 +3,15 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "Game.h"
 
-void showMenu(Position *source, Position *destination, Board *board) {
+void showMenu() {
+
+    Position* source = (Position*)malloc(sizeof(Position));
+    Position* destination = (Position*)malloc(sizeof(Position));
+    Board* board = (Board*)malloc(sizeof(Board));
+
 	const char *menuOptions[] = { 
 								  "Load a board from file", 
 								  "Enter a source position and destination", 
@@ -19,9 +25,12 @@ void showMenu(Position *source, Position *destination, Board *board) {
 	char file_name[SIZE];
 
 
+    // print menu with enumeration
 	for (int i = 0; i < 7; ++i) {
 		printf("%d.\t%s\n", i + 1, menuOptions[i]);
 	}
+
+    // menu
 	scanf("%d", &input);
 
     while(input != 7){
@@ -69,13 +78,14 @@ void showMenu(Position *source, Position *destination, Board *board) {
                 }
 
             default:
-                printf("\n\t%d is unknown input please try again..\n\n", input);
+                printf("\n%d is unknown input please try again..\n\n", input);
                 showMenu(source, destination, board);
                 break;
         }
 
-        printf("Bye Bye ...");
     }
+
+    printf("Bye Bye ...");
 }
 
 void scanXY(char *x, char *y) {

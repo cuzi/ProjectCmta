@@ -13,11 +13,6 @@ File name:	main.c
 
 void main()
 {
-	Position* source = (Position*)malloc(sizeof(Position));
-	Position* destination = (Position*)malloc(sizeof(Position));
-	Board* board = (Board*)malloc(sizeof(Board));
-
-    showMenu(source, destination, board);
-
+    showMenu();
 	// TODO: free vars
 }
