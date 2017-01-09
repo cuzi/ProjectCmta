@@ -4,17 +4,14 @@
 
 #ifndef CPROJECTMTA_GAME_H
 #define CPROJECTMTA_GAME_H
+
+#include "PositionList.h"
 #ifndef TREE_H
 #define TREE_H
-#define FALSE 0
-#define TRUE 1
 #define SIZE 100
 #define BOARD_SIZE 4  // TODO: need to be 6
 
 // Define Types
-typedef int BOOL;
-
-typedef char Position[2];
 
 typedef unsigned char Board[BOARD_SIZE][BOARD_SIZE];
 
@@ -24,14 +21,6 @@ typedef struct _PositionArray {
     Position		*positions;
 } PositionArray;
 
-typedef struct _PositionListCell {
-    Position				    position;
-    struct _PositionListCell	*next;
-} PositionListCell;
-
-typedef struct _PositionList {
-    PositionListCell *head, *tail;
-} PositionList;
 
 typedef struct _treeNode {
     Position			position;
