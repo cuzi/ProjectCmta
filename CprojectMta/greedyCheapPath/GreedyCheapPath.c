@@ -2,8 +2,6 @@
 // Created by Ben Fishman on 09/01/2017.
 //
 
-
-#include <MacTypes.h>
 #include <stdlib.h>
 #include "../Game.h"
 
@@ -15,7 +13,7 @@ static int cti(char idx){
         return idx - '0';
     }
     else{
-        return NULL;
+        return -1;
     }
 }
 
@@ -28,11 +26,11 @@ static int inboard(int idx){
     }
 }
 
-static Position findCheapestCell(Board board, Position* pos){
+static Position* findCheapestCell(Board board, Position* pos){
     int max = 0;
-    Position pmax;
-    int cr = cti(pos[0]);
-    int cc = cti(pos[1]);
+    Position* pmax;
+    int cr = cti(*pos[0]);
+    int cc = cti(*pos[1]);
     int mr,mc;
 
     for(int j=cr -1; j<= cr +1; j ++){
@@ -43,8 +41,8 @@ static Position findCheapestCell(Board board, Position* pos){
         }
     }
     if (max > 0){
-        pmax[0] = 'A' + mr;
-        pmax[1] = '0' + mc;
+        *pmax[0] = 'A' + mr;
+        *pmax[1] = '0' + mc;
 
         return pmax;
     }
@@ -53,10 +51,11 @@ static Position findCheapestCell(Board board, Position* pos){
     }
 }
 
-static Position createPos(int i, int j){
-    Position p;
-    p[0] = 'A' + i;
-    p[1] = '0' + j;
+static Position* createPos(int i, int j){
+    Position* p;
+
+    *p[0] = 'A' + i;
+    *p[1] = '0' + j;
 
     return p;
 }
@@ -73,20 +72,20 @@ static PositionArray* allocateNewPa(){
 static void insertNewPos(PositionArray*pa ,Position p){
     if (pa->logical_size <= pa->physical_size-1) {
         pa->logical_size++;
-        pa->positions[pa->logical_size] = p;
+        *(pa->positions)[pa->logical_size] = p;
     }
     else{
         pa->physical_size= (pa->physical_size)*2 + 1;
         pa->positions = (Position*) realloc(pa->positions,sizeof(Position)*(pa->physical_size));
         pa->logical_size++;
-        pa->positions[pa->logical_size] = p;
+        *(pa->positions)[pa->logical_size] = p;
     }
 }
 
 PositionArray* greedyCheapPath(Board board, Position* src, Position* dst){
-    int xr= cti(src[0]), xc=cti(src[1]);
+    int xr= cti(*src[0]), xc=cti(*src[1]);
 
-    int yr= cti(dst[0]), yc=cti(dst[1]);
+    int yr= cti(*dst[0]), yc=cti(*dst[1]);
 
     Position*  p;
 
