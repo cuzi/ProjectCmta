@@ -93,7 +93,7 @@ void showMenu() {
                 showMenu(source, destination, board);
                 break;
         }
-
+        scanf("%d", &input);
     }
 
     printf("Bye Bye ...");
