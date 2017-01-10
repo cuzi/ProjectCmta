@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Game.h"
+#include "GreedyCheapPath/GreedyCheapPath.h"
 
 void showMenu() {
 
@@ -49,15 +50,21 @@ void showMenu() {
                 scanf("%s",&file_name);
                 // TODO:  loadBoardFromBinFile(file_name, board);
                 break;
+
             case 2: // scan source and dest positions
                 scanPositions(source, destination);
                 break;
-            case 3: // execute GreedyCheapPath function
+
+            case 3: // execute greedyCheapPath function
+                greedyCheapPath(board,source,destination);
                 break;
+
             case 4: // execute findAllPossiblePaths
                 break;
+
             case 5: // execute findAllPathSortedPrices
                 break;
+
             case 6: // bla bla
                 if (*source == NULL || *destination == NULL) {
                     printf("You forgot to enter positions\n");

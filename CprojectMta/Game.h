@@ -33,7 +33,6 @@ typedef struct _pathTree {
 
 
 // Functions Declerations
-PositionArray	*greedyCheapPath(Board board, Position *src, Position *dst);
 pathTree		findAllPossiblePaths(Board board, Position *startingPosition);
 int				findAllPathsSortedPrices(Board board, pathTree *tree, Position *dst, int **prices);
 treeNode		*findTheCheapestPathEndNode(Board board, treeNode *node, Position *dst);
