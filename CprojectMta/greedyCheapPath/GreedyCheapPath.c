@@ -29,8 +29,28 @@ static int inboard(int idx){
 }
 
 static Position findCheapestCell(Board board, Position* pos){
-    int max = -1;
+    int max = 0;
+    Position pmax;
+    int cr = cti(pos[0]);
+    int cc = cti(pos[1]);
+    int mr,mc;
 
+    for(int j=cr -1; j<= cr +1; j ++){
+        if (inboard(cr) && inboard(cc) && (board[cr][cc] > max)){
+            max = board[cr][cc];
+            mr = cr;
+            mc = cc;
+        }
+    }
+    if (max > 0){
+        pmax[0] = 'A' + mr;
+        pmax[1] = '0' + mc;
+
+        return pmax;
+    }
+    else{
+        return NULL;
+    }
 }
 
 static Position createPos(int i, int j){
