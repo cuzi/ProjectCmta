@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "Game.h"
 #include "GreedyCheapPath/GreedyCheapPath.h"
+#include "streamIo/StreamIo.h"
 
 void showMenu() {
 
@@ -46,16 +47,17 @@ void showMenu() {
         switch (input)
         {
             case 1: // load board from binary file
-                printf("Enter File Path\n");
+                printf("Enter File Path:\n");
                 scanf("%s",&file_name);
-                // TODO:  loadBoardFromBinFile(file_name, board);
+                saveFile(file_name,board,"wb");
+                readFile(file_name,&board,"rb");
                 break;
 
             case 2: // scan source and dest positions
                 scanPositions(source, destination);
                 break;
 
-            case 3: // execute greedyCheapPath function
+            case 3: // execute greedyCheapPath1 function
                 greedyCheapPath(board,source,destination);
                 break;
 
