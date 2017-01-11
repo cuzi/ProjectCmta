@@ -4,15 +4,16 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "Game.h"
-#include "GreedyCheapPath/GreedyCheapPath.h"
-#include "streamIo/StreamIo.h"
+#include "../Game.h"
+#include "../greedyCheapPath/GreedyCheapPath.h"
+#include "../streamIo/StreamIo.h"
 
 void showMenu() {
 
     Position* source = (Position*)malloc(sizeof(Position));
     Position* destination = (Position*)malloc(sizeof(Position));
 
+    Board c;
     Board board=
             {
                     {'1', '5', '6', '7'},
@@ -40,7 +41,8 @@ void showMenu() {
 	}
 
     // menu
-	scanf("%d", &input);
+    printf("\nEnter new command: \n");
+    scanf("%d", &input);
 
     while(input != 7){
 
@@ -49,7 +51,6 @@ void showMenu() {
             case 1: // load board from binary file
                 printf("Enter File Path:\n");
                 scanf("%s",&file_name);
-                saveFile(file_name,board,"wb");
                 readFile(file_name,&board,"rb");
                 break;
 
@@ -95,6 +96,7 @@ void showMenu() {
                 showMenu(source, destination, board);
                 break;
         }
+        printf("Enter new command: \n");
         scanf("%d", &input);
     }
 
@@ -102,16 +104,20 @@ void showMenu() {
 }
 
 void scanXY(char *x, char *y) {
-	printf("Enter X position, number\n");
-	scanf("%d", x);
-	printf("Enter Y position, Capital letter\n");
-	scanf("%d", y);
+    while(1==1){
+        printf("Enter X position, number:\n");
+        scanf(" %c", x);
+        printf("Enter Y position, Capital letter:\n");
+        scanf(" %c", y);
 
-	if (*x >= '0' + BOARD_SIZE || *y >= 'A' + BOARD_SIZE ||
-		*x < '0' || *y < 'A' ) {
-		printf("Wrong Positions\n");
-		scanXY(x, y);
-	}
+        if (*x < '0' + BOARD_SIZE && *y < 'A' + BOARD_SIZE &&  *x >= '0' && *y >= 'A' ) {
+        break;
+        } // coordinates are valid !
+        else{
+            printf("\nWrong Positions ! \n");
+        }
+    }
+
 }
 
 void scanPositions(Position *source, Position *destination) {

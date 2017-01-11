@@ -5,7 +5,7 @@
 #ifndef CPROJECTMTA_GAME_H
 #define CPROJECTMTA_GAME_H
 
-#include "PositionList.h"
+#include "PositionList/PositionList.h"
 #ifndef TREE_H
 #define TREE_H
 #define SIZE 100

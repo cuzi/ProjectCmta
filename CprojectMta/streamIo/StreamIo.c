@@ -25,7 +25,7 @@ int saveFile(char* fileName,Board obj, char* mode){
 
 int readFile(char* fileName,Board* obj, char* mode){
 
-    unsigned char* r;
+    unsigned char r[BOARD_SIZE];
     FILE *ptr_myfile;
 
     ptr_myfile=fopen(fileName,mode);
@@ -36,7 +36,7 @@ int readFile(char* fileName,Board* obj, char* mode){
     }
     for (int row=0; row < BOARD_SIZE; row++)
     {
-        fread(r,sizeof(unsigned char)*BOARD_SIZE,1,ptr_myfile);
+        fread(r, sizeof(unsigned char)*BOARD_SIZE,1,ptr_myfile);
         for(int i=0;i<BOARD_SIZE;i++){
             *obj[row][i] = r[i];
         }
