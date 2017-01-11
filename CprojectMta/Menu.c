@@ -13,6 +13,7 @@ void showMenu() {
     Position* source = (Position*)malloc(sizeof(Position));
     Position* destination = (Position*)malloc(sizeof(Position));
 
+    Board c;
     Board board=
             {
                     {'1', '5', '6', '7'},
@@ -40,7 +41,8 @@ void showMenu() {
 	}
 
     // menu
-	scanf("%d", &input);
+    printf("\nEnter new command: \n");
+    scanf("%d", &input);
 
     while(input != 7){
 
@@ -49,7 +51,6 @@ void showMenu() {
             case 1: // load board from binary file
                 printf("Enter File Path:\n");
                 scanf("%s",&file_name);
-                saveFile(file_name,board,"wb");
                 readFile(file_name,&board,"rb");
                 break;
 
@@ -95,6 +96,7 @@ void showMenu() {
                 showMenu(source, destination, board);
                 break;
         }
+        printf("Enter new command: \n");
         scanf("%d", &input);
     }
 
