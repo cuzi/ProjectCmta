@@ -4,9 +4,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "Game.h"
-#include "GreedyCheapPath/GreedyCheapPath.h"
-#include "streamIo/StreamIo.h"
+#include "../Game.h"
+#include "../greedyCheapPath/GreedyCheapPath.h"
+#include "../streamIo/StreamIo.h"
 
 void showMenu() {
 
@@ -104,16 +104,20 @@ void showMenu() {
 }
 
 void scanXY(char *x, char *y) {
-	printf("Enter X position, number\n");
-	scanf("%d", x);
-	printf("Enter Y position, Capital letter\n");
-	scanf("%d", y);
+    while(1==1){
+        printf("Enter X position, number:\n");
+        scanf(" %c", x);
+        printf("Enter Y position, Capital letter:\n");
+        scanf(" %c", y);
 
-	if (*x >= '0' + BOARD_SIZE || *y >= 'A' + BOARD_SIZE ||
-		*x < '0' || *y < 'A' ) {
-		printf("Wrong Positions\n");
-		scanXY(x, y);
-	}
+        if (*x < '0' + BOARD_SIZE && *y < 'A' + BOARD_SIZE &&  *x >= '0' && *y >= 'A' ) {
+        break;
+        } // coordinates are valid !
+        else{
+            printf("\nWrong Positions ! \n");
+        }
+    }
+
 }
 
 void scanPositions(Position *source, Position *destination) {
