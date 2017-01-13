@@ -5,16 +5,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../Game.h"
+#include "../Position.h"
 #include "../greedyCheapPath/GreedyCheapPath.h"
 #include "../streamIo/StreamIo.h"
+#include "Menu.h"
 
 void showMenu() {
 
-    Position* source = (Position*)malloc(sizeof(Position));
-    Position* destination = (Position*)malloc(sizeof(Position));
+    Position* source = createEmptyPos();
+    Position* destination = createEmptyPos();
 
     Board c;
-    Board board=
+    Board board =
             {
                     {'1', '5', '6', '7'},
                     {'4', '4', '8', '0'},
@@ -58,43 +60,33 @@ void showMenu() {
                 scanPositions(source, destination);
                 break;
 
-            case 3: // execute greedyCheapPath1 function
-                greedyCheapPath(board,source,destination);
-                break;
-
-            case 4: // execute findAllPossiblePaths
-                break;
-
-            case 5: // execute findAllPathSortedPrices
-                break;
-
-            case 6: // bla bla
-                if (*source == NULL || *destination == NULL) {
+            case 3: 
+            case 4: 
+            case 5:
+            case 6: // Check if there is excisting positions and then end then execute the correct gateways
+                if (*source[0] == NULL || *destination[0] == NULL) {
                     printf("You forgot to enter positions\n");
                     scanPositions(source, destination);
                 }
 
                 switch (input)
                 {
-
-                    case 3:
-                        printf("hello3\n");
-                        break;
-                    case 4:
-                        printf("hello4\n");
-                        break;
-                    case 5:
-                        printf("hello5\n");
+                    case 3:  // execute greedyCheapPath1 function
+						greedyCheapPath(board, source, destination);
+						break;
+                    case 4:  // execute findAllPossiblePaths
+						break;
+                    case 5:  // execute findAllPathSortedPrices
                         break;
                     case 6:
-                        printf("hell6o\n");
                         break;
                 }
 
+				break;
             default:
                 printf("\n%d is unknown input please try again..\n\n", input);
                 showMenu(source, destination, board);
-                break;
+				return;
         }
         printf("Enter new command: \n");
         scanf("%d", &input);
@@ -104,13 +96,15 @@ void showMenu() {
 }
 
 void scanXY(char *x, char *y) {
-    while(1==1){
+    while (TRUE) {
         printf("Enter X position, number:\n");
         scanf(" %c", x);
         printf("Enter Y position, Capital letter:\n");
         scanf(" %c", y);
 
-        if (*x < '0' + BOARD_SIZE && *y < 'A' + BOARD_SIZE &&  *x >= '0' && *y >= 'A' ) {
+		toUpperChar(y);
+
+		if ( isNumberInBoard(*x) && isCapLetterInBoard(*y) ) {
         break;
         } // coordinates are valid !
         else{

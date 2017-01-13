@@ -1,7 +1,7 @@
 //
 // Created by Ben Fishman on 10/01/2017.
 //
-#include<stdio.h>
+#include <stdio.h>
 #include "../Game.h"
 
 int saveFile(char* fileName,Board obj, char* mode){

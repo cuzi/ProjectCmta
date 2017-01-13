@@ -6,15 +6,15 @@
 #include "../Game.h"
 
 static int cti(char idx){
-    if (idx >= 'A' && idx < 'A' + BOARD_SIZE) {
+    if (isCapLetterInBoard(idx)) {
         return idx - 'A';
     }
-    else if (idx >= '0' && idx < '0' + BOARD_SIZE) {
+
+    if (isNumberInBoard(idx)) {
         return idx - '0';
     }
-    else{
-        return -1;
-    }
+    return -1;
+    
 }
 
 static int inboard(int idx){
@@ -33,7 +33,7 @@ static Position* findCheapestCell(Board board, Position* pos){
     int cc = cti(*pos[1]);
     int mr,mc;
 
-    for(int j=cr -1; j<= cr +1; j ++){
+    for(int j = cr -1; j <= cr + 1; j++){
         if (inboard(cr) && inboard(cc) && (board[cr][cc] > max)){
             max = board[cr][cc];
             mr = cr;
@@ -62,9 +62,9 @@ static Position* createPos(int i, int j){
 
 static PositionArray* allocateNewPa(){
     PositionArray* pa = (PositionArray*) malloc(sizeof(PositionArray));
-    pa->logical_size= 0;
-    pa->physical_size=0;
-    pa->positions= NULL;
+    pa->logical_size  = 0;
+    pa->physical_size = 0;
+    pa->positions     = NULL;
 
     return pa;
 }
