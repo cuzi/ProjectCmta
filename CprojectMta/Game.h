@@ -27,7 +27,7 @@ typedef struct _PositionArray {
 
 typedef struct _treeNode {
     Position			position;
-    struct _treeNode	*up, *down, *top, *left;
+    struct _treeNode	*up, *down, *right, *left;
 } treeNode;
 
 typedef struct _pathTree {

@@ -4,33 +4,13 @@
 
 #include <stdlib.h>
 #include "../Game.h"
-
-static int cti(char idx){
-    if (isCapLetterInBoard(idx)) {
-        return idx - 'A';
-    }
-
-    if (isNumberInBoard(idx)) {
-        return idx - '0';
-    }
-    return -1;
-    
-}
-
-static int inboard(int idx){
-    if(idx >= 0 && idx <BOARD_SIZE){
-        return 1;
-    }
-    else{
-        return 0;
-    }
-}
+#include "../Position.h"
 
 static Position* findCheapestCell(Board board, Position* pos){
     int max = 0;
     Position* pmax;
-    int cr = cti(*pos[0]);
-    int cc = cti(*pos[1]);
+    int cr = coordinateToInt(*pos[0]);
+    int cc = coordinateToInt(*pos[1]);
     int mr,mc;
 
     for(int j = cr -1; j <= cr + 1; j++){
@@ -51,14 +31,6 @@ static Position* findCheapestCell(Board board, Position* pos){
     }
 }
 
-static Position* createPos(int i, int j){
-    Position* p;
-
-    *p[0] = 'A' + i;
-    *p[1] = '0' + j;
-
-    return p;
-}
 
 static PositionArray* allocateNewPa(){
     PositionArray* pa = (PositionArray*) malloc(sizeof(PositionArray));
@@ -83,9 +55,9 @@ static void insertNewPos(PositionArray*pa ,Position p){
 }
 
 PositionArray* greedyCheapPath(Board board, Position* src, Position* dst){
-    int xr= cti(*src[0]), xc=cti(*src[1]);
+    int xr= coordinateToInt(*src[0]), xc=coordinateToInt(*src[1]);
 
-    int yr= cti(*dst[0]), yc=cti(*dst[1]);
+    int yr= coordinateToInt(*dst[0]), yc=coordinateToInt(*dst[1]);
 
     Position*  p;
 
@@ -96,8 +68,8 @@ PositionArray* greedyCheapPath(Board board, Position* src, Position* dst){
         insertNewPos(pa,*p);
         p = findCheapestCell(board,p);
 
-        xr= cti(p[0]);
-        xc= cti(p[1]);
+        xr= coordinateToInt(p[0]);
+        xc= coordinateToInt(p[1]);
     }
 
     if (xr != yr && xc != yc){

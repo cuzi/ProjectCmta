@@ -36,6 +36,12 @@
     <ClCompile Include="Position.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FindAllPossiblePaths.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TreePath.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PositionList\PositionList.h">
@@ -54,6 +60,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Position.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FindAllPossiblePaths.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TreePath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

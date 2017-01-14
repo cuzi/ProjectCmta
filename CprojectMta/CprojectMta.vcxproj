@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FindAllPossiblePaths.c" />
     <ClCompile Include="GameFn.c" />
     <ClCompile Include="greedyCheapPath\GreedyCheapPath.c" />
     <ClCompile Include="main.c" />
@@ -149,14 +150,17 @@
     <ClCompile Include="Position.c" />
     <ClCompile Include="PositionList\PositionList.c" />
     <ClCompile Include="streamIo\StreamIo.c" />
+    <ClCompile Include="TreePath.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FindAllPossiblePaths.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="greedyCheapPath\GreedyCheapPath.h" />
     <ClInclude Include="Menu\Menu.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="PositionList\PositionList.h" />
     <ClInclude Include="streamIo\StreamIo.h" />
+    <ClInclude Include="TreePath.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

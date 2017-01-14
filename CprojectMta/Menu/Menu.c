@@ -75,6 +75,7 @@ void showMenu() {
 						greedyCheapPath(board, source, destination);
 						break;
                     case 4:  // execute findAllPossiblePaths
+						findAllPossiblePaths(board, source);
 						break;
                     case 5:  // execute findAllPathSortedPrices
                         break;
