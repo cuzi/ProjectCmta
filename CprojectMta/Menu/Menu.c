@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "../Game.h"
 #include "../Position.h"
+#include "../TreePath.h"
 #include "../greedyCheapPath/GreedyCheapPath.h"
 #include "../streamIo/StreamIo.h"
 #include "Menu.h"
@@ -14,6 +15,7 @@ void showMenu() {
 
     Position* source = createEmptyPos();
     Position* destination = createEmptyPos();
+    pathTree* pt = createNewPathTree();
 
     Board c;
     Board board =
@@ -75,11 +77,17 @@ void showMenu() {
 						greedyCheapPath(board, source, destination);
 						break;
                     case 4:  // execute findAllPossiblePaths
-						findAllPossiblePaths(board, source);
+						*pt = findAllPossiblePaths(board, source);
 						break;
                     case 5:  // execute findAllPathSortedPrices
+						if (pt->root == NULL)
+							*pt = findAllPossiblePaths(board, source);
+
                         break;
                     case 6:
+						if (pt->root == NULL)
+							*pt = findAllPossiblePaths(board, source);
+
                         break;
                 }
 

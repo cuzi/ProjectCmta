@@ -9,6 +9,6 @@
 
 
 pathTree* createNewPathTree();
-treeNode* createTreeNode(Position position);
+treeNode* createTreeNode(Position* position);
 
 #endif //CPROJECTMTA_TREEPATH_H
