@@ -20,7 +20,8 @@ pathTree* createNewPathTree() {
 
 treeNode* createTreeNode(Position* position) {
 	treeNode* tn = (treeNode*)malloc(sizeof(treeNode));
-	*tn->position = *position;
+	tn->position[0] = (*position)[0];
+	tn->position[1] = (*position)[1];
 	tn->up = NULL;
 	tn->down = NULL;
 	tn->right = NULL;

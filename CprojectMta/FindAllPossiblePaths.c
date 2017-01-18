@@ -11,57 +11,54 @@
 #include "findAllPossiblePaths.h"
 
 pathTree findAllPossiblePaths(Board board, Position *startingPosition) {
-	pathTree* pt  = createNewPathTree();
-	Position** pa = (Position*)malloc(sizeof(Position));
-	pt->root	  = createTreeNode(startingPosition);
-	connectAllBoardTreeNodes(pt->root, pa);
+	pathTree* pt      = createNewPathTree();
+	Position pa[SIZE] = { NULL };
+	int arrSize		  = 0;
+	pt->root	      = createTreeNode(startingPosition);
+	connectAllBoardTreeNodes(pt->root, pa, arrSize);
 
 	return *pt;
 
 }
-BOOL isPositionInArray(Position** positions, Position *position) {
-	while (*positions) {
-		if (*positions == position)
+BOOL isPositionInArray(Position *position, Position* positions, int arrSize) {
+	for (int i = 0; i < arrSize; i++) {
+		if (positions[i][0] == (*position)[0] &&
+			positions[i][1] == (*position)[1])
 			return TRUE;
-		++positions;
 	}
 	return FALSE;
 }
-void addPositionToArray(Position** positions, Position* position) {
-	int i = 0;
-	while (positions[i]) {
-		++i;
-	}
-	positions[i] = position;
-}
 
 
-void connectAllBoardTreeNodes(treeNode* tn, Position** positions) {
+
+void connectAllBoardTreeNodes(treeNode* tn, Position* positions, int arrSize) {
 	int x = coordinateToInt( tn->position[0]), y = coordinateToInt( tn->position[1] );
 	
-	addPositionToArray(positions, tn->position);
+	positions[arrSize][0] = tn->position[0];
+	positions[arrSize][1] = tn->position[1];
+	++arrSize;
 	
 	if (tn->up == NULL) {
-		connectTreeNodeWithCoordinates(x, y - 1, 'u', tn, positions);
+		connectTreeNodeWithCoordinates(x, y - 1, 'u', tn, positions, arrSize);
 	}
 	if (tn->down == NULL) {
-		connectTreeNodeWithCoordinates(x, y + 1, 'd', tn, positions);
+		connectTreeNodeWithCoordinates(x, y + 1, 'd', tn, positions, arrSize);
 	}
 	if (tn->right == NULL) {
-		connectTreeNodeWithCoordinates(x + 1, y, 'r', tn, positions);
+		connectTreeNodeWithCoordinates(x + 1, y, 'r', tn, positions, arrSize);
 	}
 	if (tn->right == NULL) {
-		connectTreeNodeWithCoordinates(x - 1, y, 'l', tn, positions);
+		connectTreeNodeWithCoordinates(x - 1, y, 'l', tn, positions, arrSize);
 	}
 }
 	
-void connectTreeNodeWithCoordinates(int x, int y, char direction, treeNode* source, Position** positions) {
+void connectTreeNodeWithCoordinates(int x, int y, char direction, treeNode* source, Position* positions, int arrSize) {
 	if (inboard(x) && inboard(y)) {
 		Position* pos = createPos(x, y);
-		if (!isPositionInArray(positions, pos)) {
+		if (!isPositionInArray(pos, positions, arrSize)) {
 			treeNode* target = createTreeNode(pos);
 			connectTreeNodeWith(direction, source, target);
-			connectAllBoardTreeNodes(target, positions);
+			connectAllBoardTreeNodes(target, positions, arrSize);
 		}
 	}
 }

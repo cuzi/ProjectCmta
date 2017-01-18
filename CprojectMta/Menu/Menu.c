@@ -124,9 +124,9 @@ void scanXY(char *x, char *y) {
 }
 
 void scanPositions(Position *source, Position *destination) {
-
 	printf("Enter source position: \n");
 	scanXY(&(*source)[0], &(*source)[1]);
 	printf("Enter target position: \n");
 	scanXY(&(*destination)[0], &(*destination)[1]);
+
 }

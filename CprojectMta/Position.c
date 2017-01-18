@@ -10,19 +10,19 @@
 
 
 Position* createEmptyPos() {
-	Position* pos = (Position*)malloc(sizeof(Position));
-	*pos[0] = NULL;
-	*pos[1] = NULL;
+	Position* pos = (char *)malloc(sizeof(char) * 2) ;
+	(*pos)[0] = NULL;
+	(*pos)[1] = NULL;
 
-	return &pos;
+	return pos;
 }
 
 
 Position* createPos(int i, int j) {
-	Position* p;
+	Position* p = (char *)malloc(sizeof(char) * 2);
 
-	*p[0] = 'A' + i;
-	*p[1] = '0' + j;
+	(*p)[0] = '1' + i;
+	(*p)[1] = 'A' + j;
 
 	return p;
 }
@@ -42,7 +42,7 @@ int coordinateToInt(char idx) {
 	}
 
 	if (isNumberInBoard(idx)) {
-		return idx - '0';
+		return idx - '1';
 	}
 	return -1;
 
