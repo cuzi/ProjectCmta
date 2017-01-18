@@ -9,4 +9,5 @@
 void showMenu();
 void scanXY(char *x, char *y);
 void scanPositions(Position *source, Position *destination);
+
 #endif //CPROJECTMTA_MENU_H
