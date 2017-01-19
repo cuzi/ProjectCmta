@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="findAllPathsSortedPrices.c" />
     <ClCompile Include="FindAllPossiblePaths.c" />
     <ClCompile Include="GameFn.c" />
     <ClCompile Include="greedyCheapPath\GreedyCheapPath.c" />
@@ -153,6 +154,7 @@
     <ClCompile Include="TreePath.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="findAllPathsSortedPrices.h" />
     <ClInclude Include="FindAllPossiblePaths.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="greedyCheapPath\GreedyCheapPath.h" />

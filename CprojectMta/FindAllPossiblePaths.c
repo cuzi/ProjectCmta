@@ -15,15 +15,14 @@ pathTree findAllPossiblePaths(Board board, Position *startingPosition) {
 	Position pa[SIZE] = { NULL };
 	int arrSize		  = 0;
 	pt->root	      = createTreeNode(startingPosition);
-	connectAllBoardTreeNodes(pt->root, pa, arrSize);
+	connectAllBoardTreeNodes(pt->root, pa, arrSize, board);
 
 	return *pt;
 
 }
 BOOL isPositionInArray(Position *position, Position* positions, int arrSize) {
 	for (int i = 0; i < arrSize; i++) {
-		if (positions[i][0] == (*position)[0] &&
-			positions[i][1] == (*position)[1])
+		if (isEqualPos(positions[i], *position))
 			return TRUE;
 	}
 	return FALSE;
@@ -31,34 +30,35 @@ BOOL isPositionInArray(Position *position, Position* positions, int arrSize) {
 
 
 
-void connectAllBoardTreeNodes(treeNode* tn, Position* positions, int arrSize) {
+void connectAllBoardTreeNodes(treeNode* tn, Position* positions, int arrSize, Board board) {
 	int x = coordinateToInt( tn->position[0]), y = coordinateToInt( tn->position[1] );
-	
+
+
 	positions[arrSize][0] = tn->position[0];
 	positions[arrSize][1] = tn->position[1];
 	++arrSize;
 	
 	if (tn->up == NULL) {
-		connectTreeNodeWithCoordinates(x, y - 1, 'u', tn, positions, arrSize);
+		connectTreeNodeWithCoordinates(x, y - 1, 'u', tn, positions, arrSize, board);
 	}
 	if (tn->down == NULL) {
-		connectTreeNodeWithCoordinates(x, y + 1, 'd', tn, positions, arrSize);
+		connectTreeNodeWithCoordinates(x, y + 1, 'd', tn, positions, arrSize, board);
 	}
 	if (tn->right == NULL) {
-		connectTreeNodeWithCoordinates(x + 1, y, 'r', tn, positions, arrSize);
+		connectTreeNodeWithCoordinates(x + 1, y, 'r', tn, positions, arrSize, board);
 	}
 	if (tn->right == NULL) {
-		connectTreeNodeWithCoordinates(x - 1, y, 'l', tn, positions, arrSize);
+		connectTreeNodeWithCoordinates(x - 1, y, 'l', tn, positions, arrSize, board);
 	}
 }
 	
-void connectTreeNodeWithCoordinates(int x, int y, char direction, treeNode* source, Position* positions, int arrSize) {
+void connectTreeNodeWithCoordinates(int x, int y, char direction, treeNode* source, Position* positions, int arrSize, Board board) {
 	if (inboard(x) && inboard(y)) {
 		Position* pos = createPos(x, y);
-		if (!isPositionInArray(pos, positions, arrSize)) {
+		if (!isPositionInArray(pos, positions, arrSize) && getPosValue(*pos, board) != 0) {
 			treeNode* target = createTreeNode(pos);
 			connectTreeNodeWith(direction, source, target);
-			connectAllBoardTreeNodes(target, positions, arrSize);
+			connectAllBoardTreeNodes(target, positions, arrSize, board);
 		}
 	}
 }

@@ -31,9 +31,22 @@ BOOL inboard(int idx) {
 	if (idx >= 0 && idx <BOARD_SIZE) {
 		return TRUE;
 	}
-	else {
-		return FALSE;
+	return FALSE;
+}
+
+BOOL isEqualPos(Position a, Position b) {
+	if (a[0] == b[0] &&
+		a[1] == b[1]) {
+		return TRUE;
 	}
+	return FALSE;
+	
+}
+
+BOOL isPositionOnBoard(Position pos) {
+	return inboard(coordinateToInt(pos[0])) && 
+		   inboard(coordinateToInt(pos[1])) ? 
+				TRUE : FALSE;
 }
 
 int coordinateToInt(char idx) {

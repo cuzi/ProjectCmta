@@ -7,12 +7,11 @@
 
 #include "Game.h"
 
-void connectAllBoardTreeNodes(treeNode* tn, Position* positions, int arrSize);
+void connectAllBoardTreeNodes(treeNode* tn, Position* positions, int arrSize, Board board);
 void connectTreeNodeWith(char direction, treeNode* base, treeNode* next);
 pathTree findAllPossiblePaths(Board board, Position *startingPosition);
 BOOL isPositionInArray(Position *position, Position* positions, int arrSize);
-//void addPositionToArray(Position** positions, Position* position);
-void connectTreeNodeWithCoordinates(int x, int y, char direction, treeNode* source, Position* positions, int arrSize);
+void connectTreeNodeWithCoordinates(int x, int y, char direction, treeNode* source, Position* positions, int arrSize, Board board);
 
 
 #endif //CPROJECTMTA_CREATEPATHTREE_H

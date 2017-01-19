@@ -1,5 +1,5 @@
 //
-// Created by Ben Fishman on 09/01/2017.
+// Created by Ben Fishman hahomo on 09/01/2017.
 //
 
 #ifndef CPROJECTMTA_GAME_H
@@ -46,7 +46,8 @@ void			scanPositions(Position *source, Position *destination);
 BOOL			isNumberInBoard(char c); 
 BOOL			isCapLetterInBoard(char c);
 void			toUpperChar(char* c);
-
+int				getPosValue(Position pos, Board board);
+void			quick_sort(int *a, int start, int end);
 #endif
 
 #endif //CPROJECTMTA_GAME_H

@@ -10,5 +10,6 @@
 
 pathTree* createNewPathTree();
 treeNode* createTreeNode(Position* position);
+BOOL isTreeNodeIsLeaf(treeNode* tn);
 
 #endif //CPROJECTMTA_TREEPATH_H

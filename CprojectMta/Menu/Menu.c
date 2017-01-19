@@ -16,14 +16,16 @@ void showMenu() {
     Position* source = createEmptyPos();
     Position* destination = createEmptyPos();
     pathTree* pt = createNewPathTree();
+	int *pricesArray = (int *)malloc(SIZE * sizeof(int));;
+	int paLength = 0;
 
     Board c;
     Board board =
             {
                     {'1', '5', '6', '7'},
-                    {'4', '4', '8', '0'},
-                    {'4', '4', '8', '0'},
-                    {'2', '3', '4', '5'}
+                    {'1', '4', '2', '0'},
+                    {'0', '0', '0', '0'},
+                    {'0', '0', '0', '5'}
             };
 
 	const char *menuOptions[] = { 
@@ -82,6 +84,8 @@ void showMenu() {
                     case 5:  // execute findAllPathSortedPrices
 						if (pt->root == NULL)
 							*pt = findAllPossiblePaths(board, source);
+
+						paLength = findAllPathsSortedPrices(board, pt, destination, &pricesArray);
 
                         break;
                     case 6:
