@@ -47,7 +47,7 @@ BOOL			isNumberInBoard(char c);
 BOOL			isCapLetterInBoard(char c);
 void			toUpperChar(char* c);
 int				getPosValue(Position pos, Board board);
-void			quick_sort(int *a, int start, int end);
+void			quicksort(int *A, int len);
 #endif
 
 #endif //CPROJECTMTA_GAME_H

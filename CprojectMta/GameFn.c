@@ -26,33 +26,29 @@ void toUpperChar(char *c) {
 int getPosValue(Position pos, Board board) {
 	int x = coordinateToInt(pos[0]), y = coordinateToInt(pos[1]);
 
-	return board[y][x] - '0';
+	return board[y][x];
 }
 // Quick sort algoritim
+void quicksort(int *A, int len)
+{
+	if (len < 2) return;
 
-static void swap(int *a, int *b) {
-	int *tmp = a;
-	a = b;
-	b = tmp;
-}
-static int partition(int **A, int start, int end) {
-	int i = start + 1;
-	int piv = **A;
-	for (int j = start + 1; j <= end; j++) {
+	int pivot = A[len / 2];
 
-		if (*(*A + j) < piv) {
-			swap((*A + i), (*A + j));
-			i += 1;
-		}
+	int i, j;
+	for (i = 0, j = len - 1; ; i++, j--)
+	{
+		while (A[i] < pivot) i++;
+		while (A[j] > pivot) j--;
+
+		if (i >= j) break;
+
+		int temp = A[i];
+		A[i] = A[j];
+		A[j] = temp;
 	}
-	swap((*A), (*A + i - 1));
-	return i - 1;
+
+	quicksort(A, i);
+	quicksort(A + i, len - i);
 }
 
-void quick_sort(int **a, int start, int end) {
-	if (start < end) {
-		int pos = partition(a, start, end);
-		quick_sort(a, start, pos - 1);    
-		quick_sort(a, pos + 1, end); 
-	}
-}

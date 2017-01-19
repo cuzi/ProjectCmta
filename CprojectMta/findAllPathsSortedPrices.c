@@ -36,7 +36,7 @@ int	findAllPathsSortedPrices(Board board, pathTree *tree, Position *dst, int **p
 	int pricesSize = 0;
 
 	sumToDestination(tree->root, dst, prices, &pricesSize, 0, board, '\0');
-	quick_sort(prices, 0, pricesSize);
+	quicksort(*prices, pricesSize);
 
 	return pricesSize;
 }
