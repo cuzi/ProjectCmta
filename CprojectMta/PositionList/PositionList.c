@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "PositionList.h"
+#include "../Game.h"
 
 
 //create a new Empty List
@@ -40,6 +41,7 @@ void insertDataToEndPositionList(PositionList* lst, Position data)
     newNode->next = lst->tail;
     tmp->next = newNode;
 }
+
 
 //free all memory allocations
 void freePositionList(PositionList* lst)
