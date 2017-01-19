@@ -35,21 +35,21 @@ static void swap(int *a, int *b) {
 	a = b;
 	b = tmp;
 }
-static int partition(int *A, int start, int end) {
+static int partition(int **A, int start, int end) {
 	int i = start + 1;
-	int piv = A[start];
+	int piv = **A;
 	for (int j = start + 1; j <= end; j++) {
 
-		if (A[j] < piv) {
-			swap(A[i], A[j]);
+		if (*(*A + j) < piv) {
+			swap((*A + i), (*A + j));
 			i += 1;
 		}
 	}
-	swap(A[start], A[i - 1]);  
+	swap((*A), (*A + i - 1));
 	return i - 1;
 }
 
-void quick_sort(int *a, int start, int end) {
+void quick_sort(int **a, int start, int end) {
 	if (start < end) {
 		int pos = partition(a, start, end);
 		quick_sort(a, start, pos - 1);    

@@ -47,7 +47,7 @@ void connectAllBoardTreeNodes(treeNode* tn, Position* positions, int arrSize, Bo
 	if (tn->right == NULL) {
 		connectTreeNodeWithCoordinates(x + 1, y, 'r', tn, positions, arrSize, board);
 	}
-	if (tn->right == NULL) {
+	if (tn->left == NULL) {
 		connectTreeNodeWithCoordinates(x - 1, y, 'l', tn, positions, arrSize, board);
 	}
 }

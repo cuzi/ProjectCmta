@@ -11,8 +11,8 @@ void sumToDestination(treeNode *tn,  Position *dst, int **prices, int* pricesSiz
 	int currVal = getPosValue(tn->position, board);
 
 	if (isEqualPos(tn->position, *dst)) {
-		if (!isTreeNodeIsLeaf(tn))
-			return;
+		//if (!isTreeNodeIsLeaf(tn))
+			//return;
 
 		// arrived to destination
 		*(*prices + *pricesSize) = pathSum + currVal;
@@ -36,7 +36,7 @@ int	findAllPathsSortedPrices(Board board, pathTree *tree, Position *dst, int **p
 	int pricesSize = 0;
 
 	sumToDestination(tree->root, dst, prices, &pricesSize, 0, board, '\0');
-	quick_sort(*prices, 0, pricesSize);
+	quick_sort(prices, 0, pricesSize);
 
 	return pricesSize;
 }
