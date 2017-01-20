@@ -32,12 +32,10 @@ treeNode* createTreeNode(Position* position) {
 
 
 BOOL isTreeNodeIsLeaf(treeNode* tn) {
-	int i = 0;
 
-	if (tn->up    != NULL) ++i;
-	if (tn->down  != NULL) ++i;
-	if (tn->right != NULL) ++i;
-	if (tn->left  != NULL) ++i;
+	return (tn->up == NULL)
+		&& (tn->down == NULL)
+		&& (tn->right == NULL)
+		&& (tn->left == NULL) ? TRUE : FALSE;
 
-	return i == 1 ? TRUE : FALSE;
 }

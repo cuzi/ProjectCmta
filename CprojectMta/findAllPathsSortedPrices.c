@@ -8,28 +8,24 @@
 #include "Position.h"
 
 void sumToDestination(treeNode *tn,  Position *dst, int **prices, int* pricesSize, int pathSum, Board board, char dir) {
-	int currVal = getPosValue(tn->position, board);
+	if (tn == NULL) return;
+
+	pathSum += getPosValue(tn->position, board);
 
 	if (isEqualPos(tn->position, *dst)) {
-		//if (!isTreeNodeIsLeaf(tn))
-			//return;
-
 		// arrived to destination
-		*(*prices + *pricesSize) = pathSum + currVal;
+		*(*prices + *pricesSize) = pathSum ;
 		++*pricesSize;
 	}
+
 	if (isTreeNodeIsLeaf(tn) && dir != '\0')
 		return ;
 
 
-	if (dir != 'd' && tn->up != NULL)
-		sumToDestination(tn->up, dst, prices, pricesSize, pathSum + currVal, board, 'u');
-	if (dir != 'u' && tn->down != NULL)
-		sumToDestination(tn->down, dst, prices, pricesSize, pathSum + currVal, board, 'd');
-	if (dir != 'l' && tn->right != NULL)
-		sumToDestination(tn->right, dst, prices, pricesSize, pathSum + currVal, board, 'r');
-	if (dir != 'r' && tn->left != NULL)
-		sumToDestination(tn->left, dst, prices, pricesSize, pathSum + currVal, board, 'l');
+	sumToDestination(tn->up, dst, prices, pricesSize, pathSum , board, 'u');
+	sumToDestination(tn->down, dst, prices, pricesSize, pathSum , board, 'd');
+	sumToDestination(tn->right, dst, prices, pricesSize, pathSum , board, 'r');
+	sumToDestination(tn->left, dst, prices, pricesSize, pathSum , board, 'l');
 }
 
 int	findAllPathsSortedPrices(Board board, pathTree *tree, Position *dst, int **prices) {

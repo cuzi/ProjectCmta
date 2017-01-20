@@ -45,6 +45,9 @@
     <ClCompile Include="findAllPathsSortedPrices.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="findTheCheapestPath.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PositionList\PositionList.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="findAllPathsSortedPrices.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="findTheCheapestPath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -16,16 +16,16 @@ void showMenu() {
     Position* source = createEmptyPos();
     Position* destination = createEmptyPos();
     pathTree* pt = createNewPathTree();
-	int *pricesArray = (int *)malloc(SIZE * sizeof(int));;
+	int *pricesArray = (int *)malloc(SIZE * sizeof(int));
 	int paLength = 0;
 
     Board c;
     Board board =
             {
-                    {0, 1, 255, 0},
-                    {0, 1, 0, 255},
-                    {9, 1, 4, 255},
-                    {8, 6, 5, 0}
+                    {1, 2, 3, 0},
+                    {4, 5, 6, 0},
+                    {0, 0, 7, 0},
+                    {0, 0, 0, 0}
             };
 
 	const char *menuOptions[] = { 
@@ -92,6 +92,8 @@ void showMenu() {
 						if (pt->root == NULL)
 							*pt = findAllPossiblePaths(board, source);
 
+						findTheCheapestPathEndNode(board, pt->root, destination);
+
                         break;
                 }
 
@@ -110,10 +112,10 @@ void showMenu() {
 
 void scanXY(char *x, char *y) {
     while (TRUE) {
+		printf("Enter Y position, Capital letter:\n");
+		scanf(" %c", y);
         printf("Enter X position, number:\n");
         scanf(" %c", x);
-        printf("Enter Y position, Capital letter:\n");
-        scanf(" %c", y);
 
 		toUpperChar(y);
 

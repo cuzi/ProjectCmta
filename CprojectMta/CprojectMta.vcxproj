@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClCompile Include="findAllPathsSortedPrices.c" />
     <ClCompile Include="FindAllPossiblePaths.c" />
+    <ClCompile Include="findTheCheapestPath.c" />
     <ClCompile Include="GameFn.c" />
     <ClCompile Include="greedyCheapPath\GreedyCheapPath.c" />
     <ClCompile Include="main.c" />
@@ -156,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="findAllPathsSortedPrices.h" />
     <ClInclude Include="FindAllPossiblePaths.h" />
+    <ClInclude Include="findTheCheapestPath.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="greedyCheapPath\GreedyCheapPath.h" />
     <ClInclude Include="Menu\Menu.h" />

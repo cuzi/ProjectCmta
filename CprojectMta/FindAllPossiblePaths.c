@@ -28,28 +28,30 @@ BOOL isPositionInArray(Position *position, Position* positions, int arrSize) {
 	return FALSE;
 }
 
+static void addPosition(Position* positions, int *arrSize, treeNode* tn) {
+	positions[*arrSize][0] = tn->position[0];
+	positions[*arrSize][1] = tn->position[1];
+	++(*arrSize);
+}
+static void removeLastPosition(Position* positions, int *arrSize) {
 
+	positions[*arrSize][0] = '\0';
+	positions[*arrSize][1] = '\0';
+	--(*arrSize);
+}
 
 void connectAllBoardTreeNodes(treeNode* tn, Position* positions, int arrSize, Board board) {
 	int x = coordinateToInt( tn->position[0]), y = coordinateToInt( tn->position[1] );
 
 
-	positions[arrSize][0] = tn->position[0];
-	positions[arrSize][1] = tn->position[1];
-	++arrSize;
+	addPosition(positions, &arrSize, tn);
 	
-	if (tn->up == NULL) {
-		connectTreeNodeWithCoordinates(x, y - 1, 'u', tn, positions, arrSize, board);
-	}
-	if (tn->down == NULL) {
-		connectTreeNodeWithCoordinates(x, y + 1, 'd', tn, positions, arrSize, board);
-	}
-	if (tn->right == NULL) {
-		connectTreeNodeWithCoordinates(x + 1, y, 'r', tn, positions, arrSize, board);
-	}
-	if (tn->left == NULL) {
-		connectTreeNodeWithCoordinates(x - 1, y, 'l', tn, positions, arrSize, board);
-	}
+	connectTreeNodeWithCoordinates(x, y - 1, 'u', tn, positions, arrSize, board);
+	connectTreeNodeWithCoordinates(x, y + 1, 'd', tn, positions, arrSize, board);
+	connectTreeNodeWithCoordinates(x + 1, y, 'r', tn, positions, arrSize, board);
+	connectTreeNodeWithCoordinates(x - 1, y, 'l', tn, positions, arrSize, board);
+	
+	removeLastPosition(positions, &arrSize);
 }
 	
 void connectTreeNodeWithCoordinates(int x, int y, char direction, treeNode* source, Position* positions, int arrSize, Board board) {
@@ -67,19 +69,15 @@ void connectTreeNodeWith(char direction, treeNode* base, treeNode* next) {
 	{
 	case 'u': // UP
 		base->up = next;
-		next->down = base;
 		break;
 	case 'd': // DOWN
 		base->down = next;
-		next->up = base;
 		break;
 	case 'r': // RIGHT
 		base->right = next;
-		next->left = base;
 		break;
 	case 'l': // LEFT
 		base->left = next;
-		next->right = base;
 		break;
 		
 	}
