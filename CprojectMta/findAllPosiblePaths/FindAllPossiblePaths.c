@@ -5,10 +5,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "Game.h"
-#include "TreePath.h"
-#include "Position.h"
-#include "findAllPossiblePaths.h"
+#include "../Game.h"
+#include "../TreePath.h"
+#include "../Position.h"
+#include "FindAllPossiblePaths.h"
 
 pathTree findAllPossiblePaths(Board board, Position *startingPosition) {
 	pathTree* pt      = createNewPathTree();

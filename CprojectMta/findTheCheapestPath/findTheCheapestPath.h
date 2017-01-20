@@ -2,7 +2,7 @@
 #ifndef CPROJECTMTA_CHEAPESTPATH_H
 #define CPROJECTMTA_CHEAPESTPATH_H
 
-#include "Game.h"
+#include "../Game.h"
 
 
 #endif //CPROJECTMTA_CHEAPESTPATH_H

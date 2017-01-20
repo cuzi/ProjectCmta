@@ -5,7 +5,7 @@
 #ifndef CPROJECTMTA_CREATEPATHTREE_H
 #define CPROJECTMTA_CREATEPATHTREE_H
 
-#include "Game.h"
+#include "../Game.h"
 
 void connectAllBoardTreeNodes(treeNode* tn, Position* positions, int arrSize, Board board);
 void connectTreeNodeWith(char direction, treeNode* base, treeNode* next);

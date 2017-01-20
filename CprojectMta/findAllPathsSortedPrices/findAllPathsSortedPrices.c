@@ -3,9 +3,9 @@
 //
 
 #include <stdio.h>
-#include "Game.h"
-#include "TreePath.h"
-#include "Position.h"
+#include "../Game.h"
+#include "../TreePath.h"
+#include "../Position.h"
 
 void sumToDestination(treeNode *tn,  Position *dst, int **prices, int* pricesSize, int pathSum, Board board) {
 	if (tn == NULL) return;
