@@ -14,5 +14,4 @@ File name:	main.c
 void main()
 {
     showMenu();
-	// TODO: free vars
 }

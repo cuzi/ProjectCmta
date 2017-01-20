@@ -91,7 +91,7 @@ void showMenu() {
                     case 6:
 						if (pt->root == NULL)
 							*pt = findAllPossiblePaths(board, source);
-
+						// TODO: Implement Q6 and use there the following function:
 						findTheCheapestPathEndNode(board, pt->root, destination);
 
                         break;
@@ -108,6 +108,9 @@ void showMenu() {
     }
 
     printf("Bye Bye ...");
+
+
+	// TODO: free vars
 }
 
 void scanXY(char *x, char *y) {

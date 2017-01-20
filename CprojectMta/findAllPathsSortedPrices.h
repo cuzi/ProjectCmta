@@ -4,7 +4,6 @@
 
 #include "Game.h"
 
-void sumToDestination(treeNode *tn, Position *dst, int **prices, int* pricesSize, int pathSum, Board board, char dir);
-
+void sumToDestination(treeNode *tn, Position *dst, int **prices, int* pricesSize, int pathSum, Board board);
 
 #endif //CPROJECTMTA_SORTEDPRICES_H

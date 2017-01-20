@@ -7,7 +7,7 @@
 #include "TreePath.h"
 #include "Position.h"
 
-void sumToDestination(treeNode *tn,  Position *dst, int **prices, int* pricesSize, int pathSum, Board board, char dir) {
+void sumToDestination(treeNode *tn,  Position *dst, int **prices, int* pricesSize, int pathSum, Board board) {
 	if (tn == NULL) return;
 
 	pathSum += getPosValue(tn->position, board);
@@ -18,20 +18,20 @@ void sumToDestination(treeNode *tn,  Position *dst, int **prices, int* pricesSiz
 		++*pricesSize;
 	}
 
-	if (isTreeNodeIsLeaf(tn) && dir != '\0')
+	if (isTreeNodeIsLeaf(tn) )
 		return ;
 
 
-	sumToDestination(tn->up, dst, prices, pricesSize, pathSum , board, 'u');
-	sumToDestination(tn->down, dst, prices, pricesSize, pathSum , board, 'd');
-	sumToDestination(tn->right, dst, prices, pricesSize, pathSum , board, 'r');
-	sumToDestination(tn->left, dst, prices, pricesSize, pathSum , board, 'l');
+	sumToDestination(tn->up, dst, prices, pricesSize, pathSum , board);
+	sumToDestination(tn->down, dst, prices, pricesSize, pathSum , board);
+	sumToDestination(tn->right, dst, prices, pricesSize, pathSum , board);
+	sumToDestination(tn->left, dst, prices, pricesSize, pathSum , board);
 }
 
 int	findAllPathsSortedPrices(Board board, pathTree *tree, Position *dst, int **prices) {
 	int pricesSize = 0;
 
-	sumToDestination(tree->root, dst, prices, &pricesSize, 0, board, '\0');
+	sumToDestination(tree->root, dst, prices, &pricesSize, 0, board);
 	quicksort(*prices, pricesSize);
 
 	return pricesSize;
