@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include "../Game.h"
 #include "../TreePath.h"
+#include "../Position.h"
 
 static void setLowestPathTreeNode(treeNode *tn, treeNode **lowTn, Position *dst, int *lowSum, int pathSum, Board board) {
 	if (tn == NULL || (pathSum > *lowSum && *lowSum != -1) ) return;
