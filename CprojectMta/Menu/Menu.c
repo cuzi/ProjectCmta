@@ -91,8 +91,7 @@ void showMenu() {
                     case 6:
 						if (pt->root == NULL)
 							*pt = findAllPossiblePaths(board, source);
-						// TODO: Implement Q6 and use there the following function:
-						findTheCheapestPathEndNode(board, pt->root, destination);
+                            findTheCheapestPath(board, pt, destination);
 
                         break;
                 }

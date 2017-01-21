@@ -6,43 +6,48 @@
 #include <stddef.h>
 #include "../CprojectMta/PositionList/PositionList.h"
 #include "../CprojectMta/Game.h"
+#include "FindCheapestPathList.h"
 #define DELETE 1;
 #define KEEP 0;
 
-PositionList* findTheCheapestPath(Board board, pathTree* tree, Position* dst){
-    PositionList* pa = findCheapestPathListAux(board, tree, dst);
+static int findCheapestPathRec(PositionList* pl,treeNode* node, treeNode*  tnDst) {
 
-    return pa;
-}
-
-static PositionList* findCheapestPathListAux(Board board, pathTree* tree, Position* dst){
-    PositionList* pl = makeEmptyPositionList();
-
-    insertDataToEndPositionList(pl, tree->root->position);
-    findCheapestPathRec(pl, tree->root, dst);
-    return pl;
-}
-
-static int findCheapestPathRec(PositionList* pl,treeNode* node, Position* dst) {
-    
     if (node == NULL) {
         return DELETE;
     }
-    if (node == dst) {
+    if (node == tnDst) {
         insertDataToEndPositionList(pl, node->position);
         return KEEP;
-    } else {
+    }
+    else {
         // continue searching
         insertDataToEndPositionList(pl, node->position);
 
-        if ((findCheapestPathRec(pl, node->up, dst) &&
-             findCheapestPathRec(pl, node->down, dst) &&
-             findCheapestPathRec(pl, node->left, dst) &&
-             findCheapestPathRec(pl, node->right, dst)) == 1) {
+        if ((findCheapestPathRec(pl, node->up, tnDst) && findCheapestPathRec(pl, node->down, tnDst) &&
+             findCheapestPathRec(pl, node->left, tnDst) && findCheapestPathRec(pl, node->right, tnDst)) == 1){
+
             deleteLastNode(pl);
-        }// cant continue search from that node , delete it
+            return DELETE;
+        } // cant continue search from that node , delete it
         else {
             return KEEP;
         }
     }
+}
+
+static PositionList* findCheapestPathListAux(Board board, pathTree* tree, treeNode* tnDst){
+    PositionList* pl = makeEmptyPositionList();
+
+    insertDataToEndPositionList(pl, tree->root->position);
+    findCheapestPathRec(pl, tree->root, tnDst);
+    return pl;
+}
+
+PositionList* findTheCheapestPath(Board board, pathTree* tree, Position* dst){
+    treeNode* tnDst;
+    tnDst = findTheCheapestPathEndNode(board, tree->root, dst);
+
+    PositionList* pa = findCheapestPathListAux(board, tree, tnDst);
+
+    return pa;
 }
