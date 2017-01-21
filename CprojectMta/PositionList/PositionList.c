@@ -27,6 +27,66 @@ PositionListCell* CreateNewNode(Position data)
     return newNode;
 }
 
+//delete current node from list
+void deleteNode(PositionList* pl, PositionListCell* pc){
+    PositionListCell* tmp ,* crm;
+    tmp = pl->head;
+
+    if (pl->head == pc == pl->tail){
+        free(pl->head);
+        pl->head = pl->tail = NULL;
+    } // list length is 1
+    else if (pl->head == pc){
+        crm = pl->head;
+        pl->head = pl->head->next;
+        free(crm);
+    }// head
+    else{
+
+        while (tmp->next != NULL && tmp->next != pc) {
+            tmp = tmp->next;
+        }
+
+        if (tmp->next == pc){
+
+            if (tmp->next == pl->tail){
+                pl->tail = tmp;
+            } // end
+
+            crm = tmp->next;
+            tmp->next = tmp->next->next;
+            free(crm);
+
+        } // node found
+    } // middle
+
+}
+
+//delete last node from list
+void deleteLastNode(PositionList* pl){
+    PositionListCell* tmp ;
+    tmp = pl->head;
+
+    if(pl->head != NULL && pl->tail != NULL){
+
+        if (pl->head == tmp == pl->tail){
+            free(pl->head);
+            pl->head = pl->tail = NULL;
+        } // list length is 1
+        else{
+
+            while (tmp->next != pl->tail) {
+                tmp = tmp->next;
+            }
+            free(pl->tail);
+            pl->tail = tmp;
+        }
+    }
+
+
+}
+
+
 //insert the Node to the end of the list - before dummy tail
 void insertDataToEndPositionList(PositionList* lst, Position data)
 {
