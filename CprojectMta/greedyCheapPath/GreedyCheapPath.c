@@ -20,7 +20,7 @@ static Position* findCheapestCell(Board board, Position* pos){
             mr = cr+moves[i];
             mc = cc +moves[i+1];
 
-            if (inboard(mr) && inboard(mc) && (board[mr][mc] < min) && board[mr][mc] != '0'){
+            if (inboard(mr) && inboard(mc) && board[mr][mc] < min && board[mr][mc] != 0){
                 min = board[mr][mc];
                 minr = mr;
                 minc = mc;
@@ -29,9 +29,10 @@ static Position* findCheapestCell(Board board, Position* pos){
 
     }
     if (found == 1){
+
         pmin[0] = 'A' + minr;
         pmin[1] = '1' + minc;
-        board[minr][minc] = '0';
+        board[minr][minc] = 0;
 
         return &pmin;
     }
@@ -41,8 +42,10 @@ static Position* findCheapestCell(Board board, Position* pos){
 }
 
 void printPositionArray(PositionArray* pa){
+    Position* p;
     if(pa){
        for(int i=0; i<pa->logical_size;i++){
+           p = pa->positions[i];
            printf("(%c , %c) -> ",pa->positions[i][0],pa->positions[i][1]);
        }
         printf(" -|");
@@ -63,7 +66,8 @@ static PositionArray* allocateNewPa(){
 
 static void insertNewPos(PositionArray*pa ,Position* p){
     if (pa->logical_size <= pa->physical_size-1) {
-        *(pa->positions)[pa->logical_size] = p;
+        pa->positions[pa->logical_size][0]= *p[0];
+        pa->positions[pa->logical_size][1]= (*p + 1)[0];
         pa->logical_size++;
     }
     else{
@@ -84,6 +88,7 @@ PositionArray* greedyCheapPath(Board board, Position* src, Position* dst){
 
     p = createPos(xr,xc);
     insertNewPos(pa, p);
+    board[xr][xc]=0;
 
     while((inboard(xr) && inboard(xc)) && !(xr == yr && xc == yc)){
 

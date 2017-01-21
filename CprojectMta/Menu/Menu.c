@@ -24,13 +24,12 @@ void showMenu() {
     Board c;
     Board board =
             {
-                    {1, 2, 3, 0},
+                    {1, 6, 3, 0},
                     {4, 5, 6, 0},
                     {0, 0, 7, 0},
                     {0, 0, 0, 0}
             };
-
-	const char *menuOptions[] = { 
+	const char *menuOptions[] = {
 								  "Load a board from file", 
 								  "Enter a source position and destination", 
 								  "Find a greedy cheap path between the source and destination",
@@ -68,7 +67,7 @@ void showMenu() {
 
             case 3:
                 scanPositions(source, destination);
-                pa = greedyCheapPath(board,source,destination);
+                 pa = greedyCheapPath(board,source,destination);
                 printPositionArray(pa);
                 break;
             case 4: 
@@ -95,7 +94,7 @@ void showMenu() {
 
                         break;
                     case 6:
-						if (pt->root == NULL)
+						if (pt->root != NULL)
 							*pt = findAllPossiblePaths(board, source);
                             pl = findTheCheapestPath(board, pt, destination);
                             printPositionList(pl);
