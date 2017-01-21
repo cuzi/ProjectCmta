@@ -18,6 +18,7 @@ void showMenu() {
     Position* destination = createEmptyPos();
     pathTree* pt = createNewPathTree();
 	int *pricesArray = (int *)malloc(SIZE * sizeof(int));
+    PositionArray* pa;
 	int paLength = 0;
 
     Board c;
@@ -65,10 +66,14 @@ void showMenu() {
                 scanPositions(source, destination);
                 break;
 
-            case 3: 
+            case 3:
+                scanPositions(source, destination);
+                pa = greedyCheapPath(board,source,destination);
+                printPositionArray(pa);
+                break;
             case 4: 
             case 5:
-            case 6: // Check if there is excisting positions and then end then execute the correct gateways
+            case 6: // Check if there is existing positions and then end then execute the correct gateways
                 if (*source[0] == NULL || *destination[0] == NULL) {
                     printf("You forgot to enter positions\n");
                     scanPositions(source, destination);
@@ -116,14 +121,14 @@ void showMenu() {
 
 void scanXY(char *x, char *y) {
     while (TRUE) {
-		printf("Enter Y position, Capital letter:\n");
-		scanf(" %c", y);
-        printf("Enter X position, number:\n");
-        scanf(" %c", x);
+		printf("Enter [ROW] position, Capital letter:\n");
+		scanf(" %c", x);
+        printf("Enter [COL] position, number:\n");
+        scanf(" %c", y);
 
-		toUpperChar(y);
+		toUpperChar(x);
 
-		if ( isNumberInBoard(*x) && isCapLetterInBoard(*y) ) {
+		if ( isNumberInBoard(*y) && isCapLetterInBoard(*x) ) {
         break;
         } // coordinates are valid !
         else{

@@ -45,3 +45,24 @@ int readFile(char* fileName,Board* obj, char* mode){
     return 0;
 }
 
+
+int readBufferFile(char* fileName,int bitSize, char* mode){
+
+    FILE *ptr_myfile;
+    char buffer[2];
+
+    ptr_myfile=fopen(fileName,mode);
+    if (!ptr_myfile)
+    {
+        printf("Unable to open %s file!\n", fileName);
+        return 1;
+    }
+
+    /* Attempt to read */
+    while (fread(buffer, 1, 1, ptr_myfile) == 1) {
+            /* byte swap here */
+        }
+
+    fclose(ptr_myfile);
+    return 0;
+}

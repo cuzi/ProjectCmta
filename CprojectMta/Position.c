@@ -21,8 +21,8 @@ Position* createEmptyPos() {
 Position* createPos(int i, int j) {
 	Position* p = (char *)malloc(sizeof(char) * 2);
 
-	(*p)[0] = '1' + i;
-	(*p)[1] = 'A' + j;
+	(*p)[0] = 'A' + i;
+	(*p)[1] = '1' + j;
 
 	return p;
 }

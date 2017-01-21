@@ -20,7 +20,7 @@ typedef unsigned char Board[BOARD_SIZE][BOARD_SIZE];
 
 // Define Structs
 typedef struct _PositionArray {
-    unsigned int	logical_size, physical_size;
+    int	logical_size, physical_size;
     Position		*positions;
 } PositionArray;
 

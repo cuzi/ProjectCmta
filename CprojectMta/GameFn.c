@@ -7,8 +7,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Game.h"
+#include "Position.h"
 
 BOOL isCapLetterInBoard(char c) {
+    toUpperChar(&c);
 	return c >= 'A' && c <= 'A' + BOARD_SIZE ? TRUE : FALSE;
 }
 
