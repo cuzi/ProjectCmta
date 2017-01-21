@@ -5,7 +5,7 @@
 #ifndef CPROJECTMTA_FINDCHEAPESTPATHLIST_H
 #define CPROJECTMTA_FINDCHEAPESTPATHLIST_H
 
-#include "../CprojectMta/Position.h"
+#include "../Position.h"
 
 PositionList* findTheCheapestPath(Board board, pathTree* tree, Position* dst);
 

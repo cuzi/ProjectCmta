@@ -4,8 +4,8 @@
 
 
 #include <stddef.h>
-#include "../CprojectMta/PositionList/PositionList.h"
-#include "../CprojectMta/Game.h"
+#include "../PositionList/PositionList.h"
+#include "../Game.h"
 #include "FindCheapestPathList.h"
 #define DELETE 1;
 #define KEEP 0;

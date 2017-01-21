@@ -91,15 +91,22 @@ void deleteLastNode(PositionList* pl){
 void insertDataToEndPositionList(PositionList* lst, Position data)
 {
     PositionListCell* newNode = CreateNewNode(data);
-    PositionListCell* tmp = lst->head;
-    PositionListCell* node = lst->head->next;
-    while(node->next!=NULL)
-    {
-        tmp = node;
-        node = node->next;
+    if (lst->head == NULL){
+        lst->head = lst->tail = newNode;
     }
-    newNode->next = lst->tail;
-    tmp->next = newNode;
+    else{
+
+        PositionListCell* tmp = lst->head;
+        PositionListCell* node = lst->head->next;
+        while(node->next!=NULL)
+        {
+            tmp = node;
+            node = node->next;
+        }
+        newNode->next = lst->tail;
+        tmp->next = newNode;
+    }
+
 }
 
 
