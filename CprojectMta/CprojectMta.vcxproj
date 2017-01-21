@@ -142,10 +142,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="findAllPathsSortedPrices.c" />
-    <ClCompile Include="FindAllPossiblePaths.c" />
+    <ClCompile Include="findAllPathsSortedPrices\findAllPathsSortedPrices.c" />
+    <ClCompile Include="findAllPosiblePaths\FindAllPossiblePaths.c" />
     <ClCompile Include="FindCheapestPathList\FindCheapestPathList.c" />
-    <ClCompile Include="findTheCheapestPath.c" />
+    <ClCompile Include="findTheCheapestPath\findTheCheapestPath.c" />
     <ClCompile Include="GameFn.c" />
     <ClCompile Include="greedyCheapPath\GreedyCheapPath.c" />
     <ClCompile Include="main.c" />
@@ -156,10 +156,10 @@
     <ClCompile Include="TreePath.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="findAllPathsSortedPrices.h" />
-    <ClInclude Include="FindAllPossiblePaths.h" />
+    <ClInclude Include="findAllPathsSortedPrices\findAllPathsSortedPrices.h" />
+    <ClInclude Include="findAllPosiblePaths\FindAllPossiblePaths.h" />
     <ClInclude Include="FindCheapestPathList\FindCheapestPathList.h" />
-    <ClInclude Include="findTheCheapestPath.h" />
+    <ClInclude Include="findTheCheapestPath\findTheCheapestPath.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="greedyCheapPath\GreedyCheapPath.h" />
     <ClInclude Include="Menu\Menu.h" />

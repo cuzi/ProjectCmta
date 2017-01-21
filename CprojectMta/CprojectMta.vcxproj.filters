@@ -36,19 +36,19 @@
     <ClCompile Include="Position.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FindAllPossiblePaths.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TreePath.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="findAllPathsSortedPrices.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="findTheCheapestPath.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FindCheapestPathList\FindCheapestPathList.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="findAllPathsSortedPrices\findAllPathsSortedPrices.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="findAllPosiblePaths\FindAllPossiblePaths.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="findTheCheapestPath\findTheCheapestPath.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,19 +71,19 @@
     <ClInclude Include="Position.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FindAllPossiblePaths.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TreePath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="findAllPathsSortedPrices.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="findTheCheapestPath.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FindCheapestPathList\FindCheapestPathList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="findAllPathsSortedPrices\findAllPathsSortedPrices.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="findAllPosiblePaths\FindAllPossiblePaths.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="findTheCheapestPath\findTheCheapestPath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

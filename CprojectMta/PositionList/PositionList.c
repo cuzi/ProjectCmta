@@ -124,9 +124,9 @@ void printPositionList(PositionList* lst)
         p = tmp->position;
         c=p[0];
         c=p[1];
-        printf(" (%c,%c) ->", p[0],p[1]);
+        printf(" (%c,%c) ->", (*p)[0], (*p + 1)[0]);
     }
-    printf(" (%c,%c).", p[0],p[1]);
+    printf(" (%c,%c).", (*p)[0], (*p + 1)[0]);
 }
 
 //free all memory allocations
