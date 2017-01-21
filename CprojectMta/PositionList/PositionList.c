@@ -64,32 +64,33 @@ void deleteNode(PositionList* pl, PositionListCell* pc){
 
 //delete last node from list
 void deleteLastNode(PositionList* pl){
-    PositionListCell* tmp ;
-    tmp = pl->head;
 
-    if(pl->head != NULL && pl->tail != NULL){
+    PositionListCell* t;
+    PositionListCell* tmp = pl->head;
 
-        if (pl->head == tmp == pl->tail){
-            free(pl->head);
-            pl->head = pl->tail = NULL;
-        } // list length is 1
-        else{
-
-            while (tmp->next != pl->tail) {
-                tmp = tmp->next;
-            }
-            free(pl->tail);
-            pl->tail = tmp;
-        }
+    if(pl->head->next==NULL)
+    {
+        free(pl->head);
+        pl->head=NULL;
+        pl->tail=NULL;
     }
-
+    else
+    {
+        while(tmp->next != NULL)
+        {
+            t=tmp;
+            tmp=tmp->next;
+        }
+        free(t->next);
+        t->next=NULL;
+        pl->tail = t;
+    }
 
 }
 
 
 //insert the Node to the end of the list - before dummy tail
-void insertDataToEndPositionList(PositionList* lst, Position data)
-{
+void insertDataToEndPositionList(PositionList* lst, Position data) {
     PositionListCell* newNode = CreateNewNode(data);
     if (lst->head == NULL){
         lst->head = lst->tail = newNode;
@@ -98,17 +99,35 @@ void insertDataToEndPositionList(PositionList* lst, Position data)
 
         PositionListCell* tmp = lst->head;
         PositionListCell* node = lst->head->next;
-        while(node->next!=NULL)
+        while(node !=NULL)
         {
             tmp = node;
             node = node->next;
         }
-        newNode->next = lst->tail;
-        tmp->next = newNode;
+        lst->tail = newNode;
+        tmp->next = lst->tail;
     }
 
 }
 
+//print list
+void printPositionList(PositionList* lst)
+{
+    PositionListCell* tmp;
+    Position* p;
+    char c;
+    PositionListCell* node = lst->head;
+    while(node->next!=NULL)
+    {
+        tmp = node;
+        node = node->next;
+        p = tmp->position;
+        c=p[0];
+        c=p[1];
+        printf(" (%c,%c) ->", p[0],p[1]);
+    }
+    printf(" (%c,%c).", p[0],p[1]);
+}
 
 //free all memory allocations
 void freePositionList(PositionList* lst)

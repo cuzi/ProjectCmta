@@ -22,5 +22,6 @@ void insertDataToEndPositionList(PositionList* lst, Position data);
 void freePositionList(PositionList* lst);
 void deleteNode(PositionList* pl, PositionListCell* pc);
 void deleteLastNode(PositionList* pl);
+void printPositionList(PositionList* lst);
 
 #endif //CPROJECTMTA_POSITIONLIST_H

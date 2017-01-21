@@ -37,8 +37,6 @@ static int findCheapestPathRec(PositionList* pl,treeNode* node, treeNode*  tnDst
 
 static PositionList* findCheapestPathListAux(Board board, pathTree* tree, treeNode* tnDst){
     PositionList* pl = makeEmptyPositionList();
-
-    insertDataToEndPositionList(pl, tree->root->position);
     findCheapestPathRec(pl, tree->root, tnDst);
     return pl;
 }

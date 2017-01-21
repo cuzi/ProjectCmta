@@ -13,6 +13,7 @@
 
 void showMenu() {
 
+    PositionList* pl;
     Position* source = createEmptyPos();
     Position* destination = createEmptyPos();
     pathTree* pt = createNewPathTree();
@@ -91,7 +92,8 @@ void showMenu() {
                     case 6:
 						if (pt->root == NULL)
 							*pt = findAllPossiblePaths(board, source);
-                            findTheCheapestPath(board, pt, destination);
+                            pl = findTheCheapestPath(board, pt, destination);
+                            printPositionList(pl);
 
                         break;
                 }
@@ -102,7 +104,7 @@ void showMenu() {
                 showMenu(source, destination, board);
 				return;
         }
-        printf("Enter new command: \n");
+        printf("\nEnter new command: \n");
         scanf("%d", &input);
     }
 
