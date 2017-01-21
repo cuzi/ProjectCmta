@@ -115,17 +115,16 @@ void printPositionList(PositionList* lst)
 {
     PositionListCell* tmp;
     Position* p;
-    char c;
     PositionListCell* node = lst->head;
     while(node->next!=NULL)
     {
         tmp = node;
         node = node->next;
         p = tmp->position;
-        c=p[0];
-        c=p[1];
+
         printf(" (%c,%c) ->", (*p)[0], (*p + 1)[0]);
     }
+    p = node->position;
     printf(" (%c,%c).", (*p)[0], (*p + 1)[0]);
 }
 
