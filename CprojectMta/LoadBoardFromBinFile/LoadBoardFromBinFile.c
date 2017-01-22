@@ -4,6 +4,7 @@
 
 #include "../Game.h"
 #include "../streamIo/StreamIo.h"
+#include "LoadBoardFromBinFile.h"
 
 static void initialize_board(Board brd){
     for(int i=0 ;i<BOARD_SIZE;i++){
@@ -14,22 +15,24 @@ static void initialize_board(Board brd){
     }
 }
 
-void loadBoardFromBinFile(char* file_name, Board brd){
+void loadBoardFromBinFile(char* file_name, Board brd) {
     int read;
+    int buf_len=0;
+    buffer buff=0;
+
     initialize_board(brd);
-    file_name = fopen(file_name,"rb");
-    if (!file_name)
+    FILE *f = fopen(file_name,"rb");
+    if (!f)
     {
         printf("Unable to open %s file!\n", file_name);
     }
     else{
-        read = readPosition(file_name,brd);
+        read = readPosition(f, brd, &buff, &buf_len);
 
         while(read){
-            read = readPosition(file_name,brd);
+            read = readPosition(f, brd, &buff, &buf_len);
         }
-        fclose(file_name);
     }
-
+    fclose(f);
 }
 

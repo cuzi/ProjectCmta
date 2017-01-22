@@ -6,6 +6,7 @@
 #define CPROJECTMTA_LOADBOARDFROMBINFILE_H
 
 #include "../Game.h"
+#include "../streamIo/StreamIo.h"
 
-void loadBoardFromBinFile(char* file_name, Board brd);
+int readPosition(FILE* file,Board brd,buffer* buff, int* buf_len);
 #endif //CPROJECTMTA_LOADBOARDFROMBINFILE_H

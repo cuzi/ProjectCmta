@@ -39,7 +39,7 @@ void showMenu() {
 								  "Exit"
 								};
 	unsigned int input;
-	char file_name[SIZE] ="/Users/benfishman/Desktop/boardExamples/1.bin";
+	char file_name[SIZE] ="/Users/benfishman/Desktop/boardExamples/bobo.bin";
 
 
     // print menu with enumeration
@@ -58,11 +58,13 @@ void showMenu() {
             case 1: // load board from binary file
                 //printf("Enter File Path:\n");
                 //scanf("%s",&file_name);
+                saveBoardToBinFile(file_name,board);
                 loadBoardFromBinFile(file_name,c);
                 for(int i=0;i<BOARD_SIZE;i++){
                     for(int j=0;j<BOARD_SIZE;j++){
-                        printf("%d,%d: %d\n",i,j,c[i][j]);
+                        printf(" %d",c[i][j]);
                     }
+                    printf("\n ");
                 }
                 break;
 
