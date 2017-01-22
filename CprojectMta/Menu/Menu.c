@@ -59,6 +59,11 @@ void showMenu() {
                 //printf("Enter File Path:\n");
                 //scanf("%s",&file_name);
                 loadBoardFromBinFile(file_name,c);
+                for(int i=0;i<BOARD_SIZE;i++){
+                    for(int j=0;j<BOARD_SIZE;j++){
+                        printf("%d,%d: %d\n",i,j,c[i][j]);
+                    }
+                }
                 break;
 
             case 2: // scan source and dest positions

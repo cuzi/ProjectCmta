@@ -10,83 +10,37 @@ typedef unsigned char buffer;
 typedef buffer pos;
 #define MASK_BIT_RANGE(START, END, TYPE)  ((TYPE)((1 << (END - START + 1)) - 1) << START)
 
-int saveFile(char* fileName,Board obj, char* mode){
-
-    FILE *ptr_myfile;
-
-    ptr_myfile=fopen(fileName,"wb");
-    if (!ptr_myfile)
-    {
-        printf("Unable to open %s file!\n", fileName);
-        return 1;
-    }
-    for (int row=0; row < BOARD_SIZE; row++)
-    {
-        fwrite(obj[row], sizeof(obj[row]), 1, ptr_myfile);
-    }
-    fclose(ptr_myfile);
-    return 0;
-}
-
-
-int readFile(char* fileName,Board* obj, char* mode){
-
-    unsigned char r[BOARD_SIZE];
-    FILE *ptr_myfile;
-
-    ptr_myfile=fopen(fileName,mode);
-    if (!ptr_myfile)
-    {
-        printf("Unable to open %s file!\n", fileName);
-        return 1;
-    }
-    for (int row=0; row < BOARD_SIZE; row++)
-    {
-        fread(r, sizeof(unsigned char)*BOARD_SIZE,1,ptr_myfile);
-        for(int i=0;i<BOARD_SIZE;i++){
-            *obj[row][i] = r[i];
-        }
-    }
-    fclose(ptr_myfile);
-    return 0;
-}
-
 static int writeToBuffer(FILE* file, buffer* buff,int* buf_len){
     int succes;
-    file = fopen(file,"rb");
-    if (!file)
-    {
-        printf("Unable to open %s file!\n", file);
-        return 0;
+    succes = fread(buff, sizeof(buffer), 1, file);
+    if (succes){
+        *buf_len = sizeof(buffer)*8;
+        return succes;
     }
     else{
-        succes = fread(buff, sizeof(buffer), 1, file);
-        if (succes){
-            buf_len = sizeof(buffer);
-            return succes;
-        }
-        else{
-            return succes;
-        }
+        return succes;
     }
 }
 
 static int readFromBuffer(FILE* file,buffer* data, int bits, buffer* buffer,int* buf_len){
 
-    unsigned char bit =1;
+    unsigned char bit = 1<<7;
     int state;
 
     for(int i =0 ; i< bits;i++){
         if(*buf_len == 0){
-            state=writeToBuffer(file,&buffer,buf_len);
+
+            state=writeToBuffer(file,buffer,buf_len);
+            printf("read from file to buffer\n");
         }
         if(state ==0){
             return 0;
         }
         else{
-            *buf_len--;
-            *data = bit | *buffer;
-            *data <<= 1;
+            (*buf_len)--;
+            (*data) <<= 1;
+            *data |= ((bit & *buffer)>>7);
+            (*buffer) <<= 1;
         }
 
     }
@@ -98,15 +52,18 @@ static int readFromBuffer(FILE* file,buffer* data, int bits, buffer* buffer,int*
 
 int readPosition(FILE* file,Board brd){
     unsigned char x=0,y=0,score=0;
+    int br,bc,bs;
     int buf_len=0;
-    int row,col;
+    int row =0,col =0;
     buffer buff=0;
-    if(readFromBuffer(file,x,3,&buff,&buf_len) &&
-       readFromBuffer(file,y,3,&buff,&buf_len) &&
-       readFromBuffer(file,score,8,&buff,&buf_len)) //reading position succesfully
+    br=readFromBuffer(file,&x,3,&buff,&buf_len);
+    bc=readFromBuffer(file,&y,3,&buff,&buf_len);
+    bs=readFromBuffer(file,&score,8,&buff,&buf_len);
+
+    if(br && bc && bs) //reading position successfully
     {
-        row = coordinateToInt(x);
-        col = coordinateToInt(y);
+        row = x;
+        col = y;
         brd[row][col] = score;
 
         return 1;

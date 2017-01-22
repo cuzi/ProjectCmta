@@ -11,7 +11,7 @@
 #define SIZE 100
 #define FALSE 0
 #define TRUE 1
-#define BOARD_SIZE 4  // TODO: need to be 6
+#define BOARD_SIZE 3  // TODO: need to be 6
 
 
 // Define Types

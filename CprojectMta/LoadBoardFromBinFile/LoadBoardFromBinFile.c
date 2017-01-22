@@ -17,10 +17,19 @@ static void initialize_board(Board brd){
 void loadBoardFromBinFile(char* file_name, Board brd){
     int read;
     initialize_board(brd);
-    read = readPosition(file_name,brd);
-
-    while(read){
-        read = readPosition(file_name,brd);
+    file_name = fopen(file_name,"rb");
+    if (!file_name)
+    {
+        printf("Unable to open %s file!\n", file_name);
     }
+    else{
+        read = readPosition(file_name,brd);
+
+        while(read){
+            read = readPosition(file_name,brd);
+        }
+        fclose(file_name);
+    }
+
 }
 
