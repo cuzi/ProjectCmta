@@ -20,15 +20,8 @@ void showMenu() {
 	int *pricesArray = (int *)malloc(SIZE * sizeof(int));
     PositionArray* pa;
 	int paLength = 0;
+    Board board;
 
-    Board c;
-    Board board =
-            {
-                    {1, 6, 3, 0},
-                    {4, 5, 6, 0},
-                    {0, 0, 7, 0},
-                    {0, 0, 0, 0}
-            };
 	const char *menuOptions[] = {
 								  "Load a board from file", 
 								  "Enter a source position and destination", 
@@ -38,8 +31,9 @@ void showMenu() {
 								  "Find the cheapest path between source and destination",
 								  "Exit"
 								};
+
 	unsigned int input;
-	char file_name[SIZE] ="/Users/benfishman/Desktop/boardExamples/bobo.bin";
+	char file_name[SIZE];
 
 
     // print menu with enumeration
@@ -56,16 +50,11 @@ void showMenu() {
         switch (input)
         {
             case 1: // load board from binary file
-                //printf("Enter File Path:\n");
-                //scanf("%s",&file_name);
-                saveBoardToBinFile(file_name,board);
-                loadBoardFromBinFile(file_name,c);
-                for(int i=0;i<BOARD_SIZE;i++){
-                    for(int j=0;j<BOARD_SIZE;j++){
-                        printf(" %d",c[i][j]);
-                    }
-                    printf("\n ");
-                }
+                
+				printf("Enter File Path:\n");
+                scanf("%s", &file_name);
+                loadBoardFromBinFile(file_name, board);
+
                 break;
 
             case 2: // scan source and dest positions

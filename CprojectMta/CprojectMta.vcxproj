@@ -148,6 +148,7 @@
     <ClCompile Include="findTheCheapestPath\findTheCheapestPath.c" />
     <ClCompile Include="GameFn.c" />
     <ClCompile Include="greedyCheapPath\GreedyCheapPath.c" />
+    <ClCompile Include="LoadBoardFromBinFile\LoadBoardFromBinFile.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="Menu\Menu.c" />
     <ClCompile Include="Position.c" />
@@ -162,6 +163,7 @@
     <ClInclude Include="findTheCheapestPath\findTheCheapestPath.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="greedyCheapPath\GreedyCheapPath.h" />
+    <ClInclude Include="LoadBoardFromBinFile\LoadBoardFromBinFile.h" />
     <ClInclude Include="Menu\Menu.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="PositionList\PositionList.h" />

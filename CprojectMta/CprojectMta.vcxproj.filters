@@ -51,6 +51,9 @@
     <ClCompile Include="findTheCheapestPath\findTheCheapestPath.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LoadBoardFromBinFile\LoadBoardFromBinFile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PositionList\PositionList.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="findTheCheapestPath\findTheCheapestPath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadBoardFromBinFile\LoadBoardFromBinFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
