@@ -9,13 +9,13 @@
 #include "Game.h"
 #include "Position.h"
 
-// check if letter is on  the board
+// check if letter is on the board
 BOOL isCapLetterInBoard(char c) {
     toUpperChar(&c);
 	return c >= 'A' && c <= 'A' + BOARD_SIZE ? TRUE : FALSE;
 }
 
-// check if number is legal on the board
+// check if number is on the board
 BOOL isNumberInBoard(char c) {
 	return c > '0' && c <= '0' + BOARD_SIZE ? TRUE : FALSE;
 }

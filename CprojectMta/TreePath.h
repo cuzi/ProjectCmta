@@ -7,7 +7,7 @@
 
 #include "Game.h"
 
-
+void freePathTree(pathTree *pt);
 pathTree* createNewPathTree();
 treeNode* createTreeNode(Position* position);
 BOOL isTreeNodeIsLeaf(treeNode* tn);

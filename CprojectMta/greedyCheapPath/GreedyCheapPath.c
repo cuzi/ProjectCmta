@@ -5,11 +5,23 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "../Game.h"
+#include "../LoadBoardFromBinFile/LoadBoardFromBinFile.h"
 #include "../Position.h"
 
-static Position* findCheapestCell(Board board, Position* pos){
+static void copyBoard(Board b1, Board b2) {
+	for (int i = 0; i<BOARD_SIZE; i++) {
+		for (int j = 0; j<BOARD_SIZE; j++) {
+			if (b1[i][j] != 0){
+				b2[i][j] = b1[i][j];
+			}
+		}
+	}
+}
+
+static Position* findCheapestCell(Board b, Position* pos){
     int min = 256;
     Position pmin;
+
     int moves[8] = {-1,0,1,0,0,-1,0,1};
     int cr = coordinateToInt(*pos[0]);
     int cc = coordinateToInt((*pos + 1)[0]);
@@ -20,8 +32,8 @@ static Position* findCheapestCell(Board board, Position* pos){
             mr = cr+moves[i];
             mc = cc +moves[i+1];
 
-            if (inboard(mr) && inboard(mc) && board[mr][mc] < min && board[mr][mc] != 0){
-                min = board[mr][mc];
+            if (inboard(mr) && inboard(mc) && b[mr][mc] < min && b[mr][mc] != 0){
+                min = b[mr][mc];
                 minr = mr;
                 minc = mc;
                 found=1;
@@ -32,7 +44,7 @@ static Position* findCheapestCell(Board board, Position* pos){
 
         pmin[0] = 'A' + minr;
         pmin[1] = '1' + minc;
-        board[minr][minc] = 0;
+        b[minr][minc] = 0;
 
         return &pmin;
     }
@@ -40,6 +52,7 @@ static Position* findCheapestCell(Board board, Position* pos){
         return NULL;
     }
 }
+
 
 void printPositionArray(PositionArray* pa){
     Position* p;
@@ -85,14 +98,18 @@ PositionArray* greedyCheapPath(Board board, Position* src, Position* dst){
     int yr= coordinateToInt(*dst[0]), yc=coordinateToInt((*dst + 1)[0]);
     Position*  p;
     PositionArray* pa = allocateNewPa();
+	Board b;
+
+	initialize_board(b);
+	copyBoard(board, b);
 
     p = createPos(xr,xc);
     insertNewPos(pa, p);
-    board[xr][xc]=0;
+    b[xr][xc]=0;
 
     while((inboard(xr) && inboard(xc)) && !(xr == yr && xc == yc)){
 
-        p = findCheapestCell(board,p);
+        p = findCheapestCell(b,p);
 
         if (p == NULL){
             free(pa);
@@ -109,7 +126,6 @@ PositionArray* greedyCheapPath(Board board, Position* src, Position* dst){
         return pa;
     }
     else{
-        //free(pa);
         return NULL;
     }
 
