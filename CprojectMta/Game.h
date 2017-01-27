@@ -1,5 +1,5 @@
 //
-// Created by Ben Fishman hahomo on 09/01/2017.
+// Main Header
 //
 
 #ifndef CPROJECTMTA_GAME_H

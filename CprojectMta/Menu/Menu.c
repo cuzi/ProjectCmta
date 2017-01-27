@@ -22,7 +22,7 @@ void showMenu() {
 	PositionArray* pa = NULL;
 	int paSize = 0;
 
-    //Board board;
+	//Board board;
 
 	Board board = {
 		{1, 2,3 ,4, 0,0},

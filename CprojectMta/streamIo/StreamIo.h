@@ -1,5 +1,5 @@
 //
-// Created by Ben Fishman on 10/01/2017.
+// StreamIo module header file
 //
 
 #ifndef CPROJECTMTA_STREAMIO_H
@@ -11,8 +11,6 @@
 
 typedef unsigned char buffer;
 
-int saveFile(char* fileName, Board obj, char* mode);
-int readFile(char* fileName,Board* obj, char* mode);
 void saveBoardToBinFile(const char *filename, Board board);
 void queueToBuffer(buffer data, int bits, FILE *file);
 #endif //CPROJECTMTA_STREAMIO_H

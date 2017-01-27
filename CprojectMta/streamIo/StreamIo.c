@@ -1,5 +1,5 @@
 //
-// Created by Ben Fishman on 10/01/2017.
+// StreamIo module contain functions that interact with the file system
 //
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,7 +36,7 @@ static int readFromBuffer(FILE* file, buffer* data, int bits, buffer* buffer, in
 			a = *buffer;
 		}
 		if (state == 0) {
-			return 0;
+			return FALSE;
 		}
 		else {
 			(*buf_len)--;
@@ -46,7 +46,7 @@ static int readFromBuffer(FILE* file, buffer* data, int bits, buffer* buffer, in
 		}
 
 	}
-	return 1;
+	return TRUE;
 
 }
 
@@ -65,11 +65,10 @@ int readPosition(FILE* file, Board brd, buffer* buff, int* buf_len) {
 		col = y;
 		brd[row][col] = score;
 
-		return 1;
+		return TRUE;
 	}
-	else {
-		return 0;
-	}
+	return FALSE;
+	
 
 
 }

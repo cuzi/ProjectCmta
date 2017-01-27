@@ -1,5 +1,5 @@
 //
-// Created by Ben Fishman on 22/01/2017.
+// Load Board from bin file header
 //
 
 #ifndef CPROJECTMTA_LOADBOARDFROMBINFILE_H

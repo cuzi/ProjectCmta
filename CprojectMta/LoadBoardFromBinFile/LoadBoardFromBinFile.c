@@ -1,5 +1,5 @@
 //
-// Created by Ben Fishman on 22/01/2017.
+// LoadBoardFromBinFile module create a Board from an Bin file
 //
 
 #include "../Game.h"

@@ -10,7 +10,8 @@
 
 
 Position* createEmptyPos() {
-	Position* pos = (char *)malloc(sizeof(char) * 2) ;
+	// Position* pos = (char *)malloc(sizeof(char) * 2) ;
+	Position *pos = malloc(sizeof(Position));
 	(*pos)[0] = NULL;
 	(*pos)[1] = NULL;
 
@@ -19,7 +20,8 @@ Position* createEmptyPos() {
 
 
 Position* createPos(int i, int j) {
-	Position* p = (char *)malloc(sizeof(char) * 2);
+	// Position* p = (char *)malloc(sizeof(char) * 2);
+	Position *p = malloc(sizeof(Position));
 
 	(*p)[0] = 'A' + i;
 	(*p)[1] = '1' + j;
@@ -28,7 +30,7 @@ Position* createPos(int i, int j) {
 }
 
 BOOL inboard(int idx) {
-	if (idx >= 0 && idx <BOARD_SIZE) {
+	if (idx >= 0 && idx < BOARD_SIZE) {
 		return TRUE;
 	}
 	return FALSE;
@@ -40,13 +42,13 @@ BOOL isEqualPos(Position a, Position b) {
 		return TRUE;
 	}
 	return FALSE;
-	
+
 }
 
 BOOL isPositionOnBoard(Position pos) {
-	return inboard(coordinateToInt(pos[0])) && 
-		   inboard(coordinateToInt(pos[1])) ? 
-				TRUE : FALSE;
+	return inboard(coordinateToInt(pos[0])) &&
+		inboard(coordinateToInt(pos[1])) ?
+		TRUE : FALSE;
 }
 
 int coordinateToInt(char idx) {

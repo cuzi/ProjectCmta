@@ -1,5 +1,5 @@
 //
-// Created by Fishman Ben on 20/01/2017.
+// Position header file
 //
 
 #ifndef CPROJECTMTA_FINDCHEAPESTPATHLIST_H

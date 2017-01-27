@@ -13,5 +13,5 @@ File name:	main.c
 
 void main()
 {
-    showMenu();
+	showMenu();
 }

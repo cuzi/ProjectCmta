@@ -1,5 +1,5 @@
 //
-// Created by Ben Fishman on 09/01/2017.
+// Menu header
 //
 
 #ifndef CPROJECTMTA_MENU_H

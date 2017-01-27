@@ -1,5 +1,5 @@
 //
-// Created by Ben Fishman on 09/01/2017.
+// GreadyCheapPath Module is create a gready cheap path between to positions and return it as a pointer to PositionArray
 //
 
 #include <stdlib.h>
@@ -96,7 +96,7 @@ static void insertNewPos(PositionArray*pa ,Position* p){
 PositionArray* greedyCheapPath(Board board, Position* src, Position* dst){
     int xr= coordinateToInt(*src[0]), xc=coordinateToInt((*src + 1)[0]);
     int yr= coordinateToInt(*dst[0]), yc=coordinateToInt((*dst + 1)[0]);
-    Position*  p;
+    Position* p;
     PositionArray* pa = allocateNewPa();
 	Board b;
 
@@ -117,8 +117,8 @@ PositionArray* greedyCheapPath(Board board, Position* src, Position* dst){
         }
         else{
             insertNewPos(pa, p);
-            xr= coordinateToInt(*p[0]);
-            xc= coordinateToInt((*p + 1)[0]);
+            xr= coordinateToInt(**p);
+            xc= coordinateToInt(*(*p + 1));
         }
     }
 

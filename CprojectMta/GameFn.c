@@ -11,7 +11,7 @@
 
 // check if letter is on the board
 BOOL isCapLetterInBoard(char c) {
-    toUpperChar(&c);
+	//toUpperChar(&c);
 	return c >= 'A' && c <= 'A' + BOARD_SIZE ? TRUE : FALSE;
 }
 
