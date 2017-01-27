@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../Game.h"
-#include "../Position.h"
 #include "StreamIo.h"
 
 
