@@ -21,8 +21,10 @@ void showMenu() {
 	int *pricesArray = (int *)malloc(SIZE * sizeof(int));
 	PositionArray* pa = NULL;
 	int paSize = 0;
-	Board board;
-	Board c = {
+
+    //Board board;
+
+	Board board = {
 		{1, 2,3 ,4, 0,0},
 		{0, 7,6 ,5, 0,0},
 		{0, 2,9 ,10, 0,0},
@@ -63,7 +65,7 @@ void showMenu() {
 			printf("Enter File Path:\n");
 			scanf("%s", &file_name);
 
-			saveBoardToBinFile(file_name, c);
+			saveBoardToBinFile(file_name, board);
 			loadBoardFromBinFile(file_name, board);
 
 
@@ -86,6 +88,7 @@ void showMenu() {
 			switch (input)
 			{
 			case 3:  // execute greedyCheapPath1 function
+
 				pa = greedyCheapPath(board, source, destination);
 				printPositionArray(pa);
 				break;
