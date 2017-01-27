@@ -26,7 +26,7 @@ static int writeToBuffer(FILE* file, buffer* buff, int* buf_len) {
 static int readFromBuffer(FILE* file, buffer* data, int bits, buffer* buffer, int* buf_len) {
 
 	unsigned char bit = 1 << 7;
-	int state;
+	int state = -1;
 	int a;
 	a = *buffer;
 	for (int i = 0; i < bits; i++) {
@@ -34,8 +34,6 @@ static int readFromBuffer(FILE* file, buffer* data, int bits, buffer* buffer, in
 
 			state = writeToBuffer(file, buffer, buf_len);
 			a = *buffer;
-
-			printf("read from file to buffer\n");
 		}
 		if (state == 0) {
 			return 0;

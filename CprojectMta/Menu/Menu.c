@@ -21,6 +21,14 @@ void showMenu() {
     PositionArray* pa;
 	int paLength = 0;
     Board board;
+	Board c = {
+		{1, 2,3 ,4, 0,0},
+		{1, 2,3 ,4, 0,0},
+		{1, 2,3 ,4, 0,0},
+		{0, 0,0 ,4, 0,0},
+		{0, 0,0 ,4, 0,0},
+		{0, 0,0 ,4, 0,0}
+	};
 
 	const char *menuOptions[] = {
 								  "Load a board from file", 
@@ -33,7 +41,7 @@ void showMenu() {
 								};
 
 	unsigned int input;
-	char file_name[SIZE];
+	char file_name[SIZE] = "C:/board/ab.bin";
 
 
     // print menu with enumeration
@@ -51,9 +59,13 @@ void showMenu() {
         {
             case 1: // load board from binary file
                 
-				printf("Enter File Path:\n");
-                scanf("%s", &file_name);
+				//printf("Enter File Path:\n");
+                //scanf("%s", &file_name);
+				
+				saveBoardToBinFile(file_name, c);
                 loadBoardFromBinFile(file_name, board);
+
+
 
                 break;
 
@@ -62,10 +74,6 @@ void showMenu() {
                 break;
 
             case 3:
-                scanPositions(source, destination);
-                 pa = greedyCheapPath(board,source,destination);
-                printPositionArray(pa);
-                break;
             case 4: 
             case 5:
             case 6: // Check if there is existing positions and then end then execute the correct gateways
@@ -77,7 +85,7 @@ void showMenu() {
                 switch (input)
                 {
                     case 3:  // execute greedyCheapPath1 function
-						greedyCheapPath(board, source, destination);
+						pa = greedyCheapPath(board, source, destination);
 						break;
                     case 4:  // execute findAllPossiblePaths
 						*pt = findAllPossiblePaths(board, source);
@@ -111,7 +119,12 @@ void showMenu() {
     printf("Bye Bye ...");
 
 
-	// TODO: free vars
+	//  free vars
+	free(source);
+	free(destination);
+	free(pt); 
+	free(pricesArray); 
+	free(pa); 
 }
 
 void scanXY(char *x, char *y) {
@@ -124,9 +137,9 @@ void scanXY(char *x, char *y) {
 		toUpperChar(x);
 
 		if ( isNumberInBoard(*y) && isCapLetterInBoard(*x) ) {
-        break;
+			break;
         } // coordinates are valid !
-        else{
+        else {
             printf("\nWrong Positions ! \n");
         }
     }
