@@ -7,6 +7,21 @@
 #include "PositionList.h"
 #include "../Game.h"
 
+// Free PositionListCell and he's childs
+static void freePosListCell(PositionListCell *pc) {
+	if (pc == NULL)
+		return;
+
+	freePosListCell(pc->next);
+	free(pc);
+}
+// Free PositionList
+void freePosList(PositionList *pl) {
+	if (pl == NULL)
+		return;
+	freePosListCell(pl->head);
+	free(pl);
+}
 
 //create a new Empty List
 PositionList* makeEmptyPositionList()
@@ -126,18 +141,4 @@ void printPositionList(PositionList* lst)
 	}
 	p = node->position;
 	printf(" (%c,%c).", (*p)[0], (*p + 1)[0]);
-}
-
-//free all memory allocations
-void freePositionList(PositionList* lst)
-{
-	PositionListCell* tmp;
-	PositionListCell* node = lst->head;
-	while (node->next != NULL)
-	{
-		tmp = node;
-		node = node->next;
-		free(tmp);
-	}
-	free(node);
 }

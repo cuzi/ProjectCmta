@@ -2,6 +2,7 @@
 // Project menu
 //
 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../Game.h"
@@ -13,18 +14,18 @@
 
 void showMenu() {
 
-	PositionList* pl;
+	PositionList* pl = NULL;
 	Position* source = createEmptyPos();
 	Position* destination = createEmptyPos();
 	pathTree* pt = createNewPathTree();
 	int *pricesArray = (int *)malloc(SIZE * sizeof(int));
-	PositionArray* pa;
+	PositionArray* pa = NULL;
 	int paSize = 0;
 	Board board;
 	Board c = {
 		{1, 2,3 ,4, 0,0},
-		{1, 2,3 ,4, 0,0},
-		{1, 2,3 ,4, 0,0},
+		{0, 7,6 ,5, 0,0},
+		{0, 2,9 ,10, 0,0},
 		{0, 0,0 ,4, 0,0},
 		{0, 0,0 ,4, 0,0},
 		{0, 0,0 ,4, 0,0}
@@ -41,7 +42,7 @@ void showMenu() {
 	};
 
 	unsigned int input;
-	char file_name[SIZE] = "C:/board/ab.bin";
+	char file_name[SIZE];
 
 
 	// print menu with enumerationf
@@ -59,8 +60,8 @@ void showMenu() {
 		{
 		case 1: // load board from binary file
 
-			//printf("Enter File Path:\n");
-			//scanf("%s", &file_name);
+			printf("Enter File Path:\n");
+			scanf("%s", &file_name);
 
 			saveBoardToBinFile(file_name, c);
 			loadBoardFromBinFile(file_name, board);
@@ -86,6 +87,7 @@ void showMenu() {
 			{
 			case 3:  // execute greedyCheapPath1 function
 				pa = greedyCheapPath(board, source, destination);
+				printPositionArray(pa);
 				break;
 			case 4:  // execute findAllPossiblePaths
 				*pt = findAllPossiblePaths(board, source);
@@ -123,7 +125,7 @@ void showMenu() {
 	free(source);
 	free(destination);
 	freePathTree(pt);
-	freePositionList(pl);
+	freePosList(pl);
 	free(pricesArray);
 	free(pa);
 }

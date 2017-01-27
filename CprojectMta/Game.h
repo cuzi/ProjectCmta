@@ -6,9 +6,8 @@
 #define CPROJECTMTA_GAME_H
 
 #include "PositionList/PositionList.h"
-#ifndef TREE_H
-#define TREE_H
 #define SIZE 100
+#define _CRT_SECURE_NO_WARNINGS
 #define FALSE 0
 #define TRUE 1
 #define BOARD_SIZE 6  
@@ -47,6 +46,4 @@ BOOL			isCapLetterInBoard(char c);
 void			toUpperChar(char* c);
 int				getPosValue(Position pos, Board board);
 void			quicksort(int *A, int len);
-#endif
-
 #endif //CPROJECTMTA_GAME_H

@@ -19,7 +19,7 @@ typedef struct _PositionList {
 PositionList* makeEmptyPositionList();
 PositionListCell* CreateNewNode(Position data);
 void insertDataToEndPositionList(PositionList* lst, Position data);
-void freePositionList(PositionList* lst);
+void freePosList(PositionList *pl);
 void deleteNode(PositionList* pl, PositionListCell* pc);
 void deleteLastNode(PositionList* pl);
 void printPositionList(PositionList* lst);
